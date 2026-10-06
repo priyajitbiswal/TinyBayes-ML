@@ -1,0 +1,76 @@
+image_path,crop,subclass,image_name
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_XOXkgf.jpg,Cocoa,anthracnose,ID_XOXkgf.jpg
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_BiBTCj.jpeg,Cocoa,anthracnose,ID_BiBTCj.jpeg
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_uymYko.jpeg,Cocoa,anthracnose,ID_uymYko.jpeg
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_TqjdQX.jpeg,Cocoa,anthracnose,ID_TqjdQX.jpeg
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_zOEJFj.jpg,Cocoa,anthracnose,ID_zOEJFj.jpg
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_WJDjT3.jpg,Cocoa,cssvd,ID_WJDjT3.jpg
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_iKOnJ4.jpg,Cocoa,cssvd,ID_iKOnJ4.jpg
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_pq4fCu.jpg,Cocoa,cssvd,ID_pq4fCu.jpg
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_xceygB.jpg,Cocoa,cssvd,ID_xceygB.jpg
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_FSBAv0.jpg,Cocoa,cssvd,ID_FSBAv0.jpg
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_eYveox.JPG,Cocoa,healthy,ID_eYveox.JPG
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_mHSpdC.jpeg,Cocoa,healthy,ID_mHSpdC.jpeg
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_Vy4Jz3.jpg,Cocoa,healthy,ID_Vy4Jz3.jpg
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_dQzSLh.jpg,Cocoa,healthy,ID_dQzSLh.jpg
+c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_jaiRz0.jpeg,Cocoa,healthy,ID_jaiRz0.jpeg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\bacterial_blight\bact231.jpg,Cotton,bacterial_blight,bact231.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\bacterial_blight\bact227.jpg,Cotton,bacterial_blight,bact227.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\bacterial_blight\bact159.jpg,Cotton,bacterial_blight,bact159.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\bacterial_blight\bact201.jpg,Cotton,bacterial_blight,bact201.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\curl_virus\curl421.jpg,Cotton,curl_virus,curl421.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\curl_virus\curl159.jpg,Cotton,curl_virus,curl159.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\curl_virus\curl374.jpg,Cotton,curl_virus,curl374.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\curl_virus\curl330.jpg,Cotton,curl_virus,curl330.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\fussarium_wilt\fus74.jpg,Cotton,fussarium_wilt,fus74.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\fussarium_wilt\fus346.png,Cotton,fussarium_wilt,fus346.png
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\fussarium_wilt\fus177.jpg,Cotton,fussarium_wilt,fus177.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\fussarium_wilt\fus130.jpg,Cotton,fussarium_wilt,fus130.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\healthy\h271.jpg,Cotton,healthy,h271.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\healthy\images (4).jpg,Cotton,healthy,images (4).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\healthy\h213.png,Cotton,healthy,h213.png
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (46).jpg,Potato,early blight,Potato leaf early blight (46).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (5).jpg,Potato,early blight,Potato leaf early blight (5).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (80).jpg,Potato,early blight,Potato leaf early blight (80).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (65).jpg,Potato,early blight,Potato leaf early blight (65).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (100).jpg,Potato,early blight,Potato leaf early blight (100).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (56).jpg,Potato,early blight,Potato leaf early blight (56).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (48).jpg,Potato,early blight,Potato leaf early blight (48).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (29).jpg,Potato,early blight,Potato leaf early blight (29).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\late blight\Potato leaf late blight (33).jpg,Potato,late blight,Potato leaf late blight (33).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\late blight\Potato leaf late blight (34).jpg,Potato,late blight,Potato leaf late blight (34).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\late blight\Potato leaf late blight (50).jpg,Potato,late blight,Potato leaf late blight (50).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\late blight\Potato leaf late blight (57).jpg,Potato,late blight,Potato leaf late blight (57).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\late blight\Potato leaf late blight (4).jpg,Potato,late blight,Potato leaf late blight (4).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\late blight\Potato leaf late blight (40).jpg,Potato,late blight,Potato leaf late blight (40).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\late blight\Potato leaf late blight (25).jpg,Potato,late blight,Potato leaf late blight (25).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Bacterial Leaf Blight\aug_0_59.jpg,Rice,Bacterial Leaf Blight,aug_0_59.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Bacterial Leaf Blight\aug_0_2990.jpg,Rice,Bacterial Leaf Blight,aug_0_2990.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Bacterial Leaf Blight\aug_0_1819.jpg,Rice,Bacterial Leaf Blight,aug_0_1819.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Brown Spot\aug_0_6131.jpg,Rice,Brown Spot,aug_0_6131.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Brown Spot\aug_0_5104.jpg,Rice,Brown Spot,aug_0_5104.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Brown Spot\IMG_20231014_173306.jpg,Rice,Brown Spot,IMG_20231014_173306.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Healthy Rice Leaf\Healthy_rice_leaf (127).jpg,Rice,Healthy Rice Leaf,Healthy_rice_leaf (127).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Healthy Rice Leaf\aug_0_7735.jpg,Rice,Healthy Rice Leaf,aug_0_7735.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Healthy Rice Leaf\aug_0_7127.jpg,Rice,Healthy Rice Leaf,aug_0_7127.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Leaf Blast\aug_0_379.jpg,Rice,Leaf Blast,aug_0_379.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Leaf Blast\IMG_20231006_165457.jpg,Rice,Leaf Blast,IMG_20231006_165457.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Leaf scald\aug_0_3619.jpg,Rice,Leaf scald,aug_0_3619.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Leaf scald\aug_0_1060.jpg,Rice,Leaf scald,aug_0_1060.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Sheath Blight\IMG_20231018_143300.jpg,Rice,Sheath Blight,IMG_20231018_143300.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Sheath Blight\aug_0_8828.jpg,Rice,Sheath Blight,aug_0_8828.jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\bacterial spot\Tomato leaf bacterial spot (7).jpg,Tomato,bacterial spot,Tomato leaf bacterial spot (7).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\bacterial spot\Tomato leaf bacterial spot (69).jpg,Tomato,bacterial spot,Tomato leaf bacterial spot (69).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\early blight\Tomato Early blight leaf (37).jpg,Tomato,early blight,Tomato Early blight leaf (37).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\early blight\Tomato Early blight leaf (45).jpg,Tomato,early blight,Tomato Early blight leaf (45).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\healthy\Tomato leaf (23).jpg,Tomato,healthy,Tomato leaf (23).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\healthy\Tomato leaf (46).jpg,Tomato,healthy,Tomato leaf (46).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\late blight\Tomato leaf late blight (6).jpg,Tomato,late blight,Tomato leaf late blight (6).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\late blight\Tomato leaf late blight (72).jpg,Tomato,late blight,Tomato leaf late blight (72).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\leaf mold\Tomato mold leaf (17).jpg,Tomato,leaf mold,Tomato mold leaf (17).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\leaf mold\Tomato mold leaf (48).jpg,Tomato,leaf mold,Tomato mold leaf (48).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\mosaic virus\Tomato leaf mosaic virus (4).jpg,Tomato,mosaic virus,Tomato leaf mosaic virus (4).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\mosaic virus\Tomato leaf mosaic virus (22).jpg,Tomato,mosaic virus,Tomato leaf mosaic virus (22).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\septoria spot\Tomato Septoria leaf spot (39).jpg,Tomato,septoria spot,Tomato Septoria leaf spot (39).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\septoria spot\Tomato Septoria leaf spot (38).jpg,Tomato,septoria spot,Tomato Septoria leaf spot (38).jpg
+c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\yellow virus\Tomato leaf yellow virus (7).jpg,Tomato,yellow virus,Tomato leaf yellow virus (7).jpg

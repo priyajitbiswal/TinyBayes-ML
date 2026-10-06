@@ -1,0 +1,11 @@
+# Local dataset images and archive backups (not committed to git)
+data/
+
+# Python and Jupyter
+__pycache__/
+*.py[cod]
+*.class
+.ipynb_checkpoints/
+.venv/
+*.tmp
+*.log
