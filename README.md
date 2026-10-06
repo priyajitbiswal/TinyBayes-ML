@@ -38,6 +38,8 @@ TinyBayes-ML/
 │       ├── build_clean_notebooks.py
 │       └── run_all_evaluations.py
 │
+├── CROP_DISEASE_REMEDIES.md             # Comprehensive 27-class agricultural remedies guide
+├── CONTEXT.md                           # Comprehensive architecture and context specification
 ├── requirements.txt                     # Package dependencies for pipelines & notebooks
 └── README.md
 ```
@@ -79,7 +81,6 @@ The system uses a two-stage hierarchical classification architecture:
 - Model heads stored in `app/src/main/assets/models/`:
   - `crop_identifier_coefficients.json`: Gatekeeper model.
   - `jacobi_coefficients.json`: **Unified coefficients file** containing all 5 crops and their embedded agricultural remedies.
-  - `<crop>/jacobi_coefficients.json`: Per-crop modular coefficient heads.
 
 ---
 
