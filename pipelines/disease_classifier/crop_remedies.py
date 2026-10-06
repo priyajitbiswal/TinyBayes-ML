@@ -1,0 +1,177 @@
+"""
+Comprehensive crop disease remedies for the TinyBayes edge-AI diagnostic system.
+Covers all 27 active disease classes across Cocoa, Cotton, Potato, Rice, and Tomato.
+Healthy classes map to empty strings ("") so the mobile UI does not trigger remedy dialogs for healthy leaves.
+"""
+
+import json
+import os
+
+CROP_REMEDIES = {
+    "cocoa": {
+        "anthracnose": (
+            "• Cultural Control: Prune shade trees and cocoa canopies to improve aeration and sunlight penetration (aim for 30–50% shade). Collect and bury or burn infected pods and fallen diseased leaves.\n"
+            "• Organic/Bio Control: Apply bio-fungicides containing Trichoderma harzianum or Bacillus subtilis to suppress fungal sporulation. Use certified copper soap or neem extract (NSKE 5%) at the onset of rain.\n"
+            "• Chemical Control: Spray Copper Oxychloride 50% WP (2.5–3.0 g/L) or Cuprous Oxide every 2–3 weeks during rainy flushes. For active outbreaks, apply systemic fungicides like Tebuconazole (1 ml/L) or Difenoconazole (0.5 ml/L)."
+        ),
+        "cssvd": (
+            "• Immediate Action (Eradication): Viral disease with NO chemical cure. Promptly cut out (uproot) all visibly infected trees plus adjacent contact trees within 5–10 meters. Burn or bury felled debris on-site.\n"
+            "• Vector Management: Control mealybug vectors and attending ants around border barriers using systemic insecticides (e.g., Imidacloprid). Establish 10-meter barrier crops (citrus, oil palm, rubber) around plot borders.\n"
+            "• Replanting: Replant with CSSVD-tolerant hybrid cocoa seedlings certified by agricultural research agencies. Maintain ~50% shade to reduce plant stress."
+        ),
+        "healthy": ""
+    },
+    "cotton": {
+        "Bacterial_Blight": (
+            "• Cultural Control: Sow certified acid-delinted disease-free seed. Perform deep summer ploughing to bury crop residues. Rotate crops for 2 years with cereals or legumes. Avoid overhead sprinkler/flood irrigation.\n"
+            "• Seed Treatment: Treat seeds with Streptocycline (100 ppm) + Copper Oxychloride (2 g/kg seed) or Pseudomonas fluorescens (10 g/kg seed).\n"
+            "• Foliar Spray: Spray Copper Oxychloride 50% WP (2.5 g/L) tank-mixed with Streptocycline or Plantomycin (100 mg/L) at first symptom appearance. Repeat after 12–15 days if humid conditions persist."
+        ),
+        "Curl_Virus": (
+            "• Cultural & Sanitation: Viral disease with NO chemical cure. Rogue out and burn infected plants within 45–60 days of sowing. Eradicate alternate weed hosts (Abutilon, Sida, Parthenium) around field borders. Plant CLCuV-resistant Bt hybrids.\n"
+            "• Vector Management (Whitefly): Install yellow sticky traps (15–20 traps/acre). Spray Neem oil (10,000 ppm at 2 ml/L) or NSKE 5% early.\n"
+            "• Targeted Insecticides: Apply Diafenthiuron 50% WP (1.2 g/L), Spiromesifen 22.9% SC (1 ml/L), or Flonicamid 50% WG (0.3 g/L). Avoid pyrethroids which cause whitefly flare-up."
+        ),
+        "Fussarium_Wilt": (
+            "• Cultural & Soil Sanitation: Soil-borne fungal disease causing vascular browning and wilting. Rotate crops for 3–4 years with non-host crops (maize, sorghum). Deep summer plough to solarize soil. Collect and burn all infected crop residues. Grow wilt-resistant cultivars.\n"
+            "• Biological Control: Apply Trichoderma viride or Pseudomonas fluorescens (2.5 kg/ha enriched in 250 kg well-decomposed FYM/compost) at sowing or before planting.\n"
+            "• Seed Treatment & Drenching: Treat seeds with Carbendazim 50% WP (2 g/kg seed) or Carboxin + Thiram (2.5 g/kg seed). At early localized wilting onset, drench affected plant root zones with Carbendazim 50% WP (1 g/L) or Copper Oxychloride 50% WP (2.5 g/L)."
+        ),
+        "Healthy": "",
+        "Leaf_Hopper_Jassids": (
+            "• Cultural & Biological: Grow hairy/pubescent cotton varieties that deter jassid feeding. Avoid excessive nitrogen fertilizer. Install yellow sticky traps (10–15 traps/acre). Conserve predatory ladybird beetles and green lacewings.\n"
+            "• Organic Control: Spray Neem oil (3,000 ppm at 3–5 ml/L) or NSKE 5% at early nymph appearance.\n"
+            "• Chemical Control (ETL 1–2 nymphs/leaf): Spray Flonicamid 50% WG (0.3 g/L), Dinotefuran 20% SG (0.3 g/L), Imidacloprid 17.8% SL (0.3 ml/L), or Thiamethoxam 25% WG (0.2 g/L)."
+        ),
+        "Leaf_Redding": (
+            "• Immediate Foliar Remedy: Physiological disorder caused by cold night stress, moisture stress, and Mg/N deficiency during boll development. Red leaves cannot turn green, but further spread can be prevented. Spray Magnesium Sulphate (MgSO4) at 10–20 g/L (1–2%) combined with 1% Urea (10 g/L) or 2% DAP. Repeat after 10–12 days.\n"
+            "• Soil Management: Apply 25 kg/ha Magnesium Sulphate to soil during base or top-dressing in prone soils. Ensure good field drainage to prevent water stagnation."
+        ),
+        "Leaf_Variegation": (
+            "• Diagnosis & Management: Harmless genetic chimera or physiological mutation causing localized lack of chlorophyll in leaf patches. It is NOT caused by any pathogen and does not diminish overall crop yields.\n"
+            "• Action: No chemical or biological treatment is needed or effective. Maintain standard balanced irrigation and nutrition. For future seasons, use certified hybrid seeds."
+        )
+    },
+    "potato": {
+        "Early_Blight": (
+            "• Cultural Control: Practice 2–3 year crop rotation with non-solanaceous crops. Use drip or furrow irrigation to keep foliage dry. Maintain proper plant spacing and prune lower infected leaves with bullseye lesions.\n"
+            "• Organic Control: Apply Bacillus subtilis or Trichoderma viride (2.5 g/L) preventively. Spray copper soap at 7–10 day intervals.\n"
+            "• Chemical Control: Preventive spray of Mancozeb 75% WP (2.0–2.5 g/L) or Chlorothalonil 75% WP (2 g/L). For curative control at first spots, apply Azoxystrobin + Difenoconazole (1 ml/L) or Tebuconazole 25.9% EC (1 ml/L)."
+        ),
+        "Late_Blight": (
+            "• Cultural Control: Plant certified disease-free seed tubers. Eliminate all potato cull piles and volunteer plants. Hill potatoes with 10–15 cm soil cover to shield tubers from washed-down spores. De-haulm (destroy vines) 10–14 days before harvest if blight is active.\n"
+            "• Preventive Spray: Mancozeb 75% WP (2.5 g/L) or Copper Oxychloride 50% WP (3.0 g/L) before weather turns favorable.\n"
+            "• Curative/Systemic: At first sign of water-soaked spots, spray Metalaxyl-M + Mancozeb (Ridomil Gold, 2.5 g/L), Cymoxanil 8% + Mancozeb 64% WP (2.0 g/L), Dimethomorph 50% WP (1.0 g/L), or Mandipropamid (0.8 ml/L)."
+        ),
+        "Healthy": ""
+    },
+    "rice": {
+        "Bacterial_Leaf_Blight": (
+            "• Cultural Control: Avoid excessive nitrogen fertilizer (apply in 3–4 split doses based on Leaf Color Chart). Drain standing water from the field for 3–5 days when symptoms appear. Avoid clipping seedling tips. Keep bunds clean of grass weeds.\n"
+            "• Biological Control: Spray Pseudomonas fluorescens (2 g/L or 1 kg/ha) at 30 and 45 days after transplanting.\n"
+            "• Chemical Control: Spray Copper Hydroxide 77% WP (2 g/L) or Copper Oxychloride 50% WP (2.5 g/L) mixed with Streptocycline (100–150 ppm, 1–1.5 g per 10 L of water). Repeat after 10–12 days if rains continue."
+        ),
+        "Brown_Spot": (
+            "• Cultural & Soil Management: Often caused by soil exhaustion (potash, zinc, silicon deficit) and drought stress. Apply balanced NPK with adequate MOP (potash) and zinc sulphate. Maintain continuous shallow standing water.\n"
+            "• Seed Treatment: Carbendazim 50% WP (2 g/kg seed) or hot water soak (53–54°C for 10–12 min).\n"
+            "• Foliar Spray: Spray Propiconazole 25% EC (1 ml/L), Hexaconazole 5% SC (2 ml/L), or Tricyclazole + Mancozeb (2.5 g/L) at boot leaf stage and 50% heading."
+        ),
+        "Leaf_Blast": (
+            "• Cultural Control: Avoid high, late nitrogen doses. Maintain shallow standing water (2–5 cm) to avoid moisture stress. Remove grassy weeds on bunds. Cultivate blast-tolerant varieties.\n"
+            "• Biological Control: Seed treatment with Pseudomonas fluorescens (10 g/kg seed) and seedling root dip.\n"
+            "• Chemical Control: Spray Tricyclazole 75% WP (0.6 g/L or 300–400 g/ha) at the earliest appearance of spindle-shaped lesions. Alternatively spray Isoprothiolane 40% EC (1.5 ml/L), Kasugamycin 3% SL (2–2.5 ml/L), or Azoxystrobin + Difenoconazole (1 ml/L)."
+        ),
+        "Leaf_Scald": (
+            "• Cultural Control: Maintain proper plant spacing for aeration. Avoid excessive nitrogen applications, especially during overcast monsoon periods. Ensure proper drainage.\n"
+            "• Chemical Control: Spray Propiconazole 25% EC (1 ml/L), Carbendazim 12% + Mancozeb 63% WP (1.5–2.0 g/L), or Benomyl 50% WP (1.0 g/L) at boot stage or early panicle emergence."
+        ),
+        "Sheath_Blight": (
+            "• Cultural Control: Avoid excessive nitrogen fertilizer and apply in split doses with balanced potash (potassium strengthens culm resistance). Provide optimal plant spacing (20 x 15 cm) for cross-canopy aeration. Drain excess water and remove floating sclerotia during field preparation.\n"
+            "• Biological Control: Spray Pseudomonas fluorescens (1 kg/ha) or Trichoderma harzianum at tillering and panicle initiation stages.\n"
+            "• Chemical Control: Spray Hexaconazole 5% SC (2 ml/L), Validamycin 3% L (2.5 ml/L), Thifluzamide 24% SC (0.75 ml/L), or Azoxystrobin 18.2% + Difenoconazole 11.4% SC (1 ml/L) directed at the plant base/sheaths upon initial lesion detection. Repeat after 15 days if humid conditions persist."
+        ),
+        "Healthy": ""
+    },
+    "tomato": {
+        "Bacterial_Spot": (
+            "• Cultural Control: Use hot-water treated certified seeds (50°C for 25 min). Prune lower leaves and mulch heavily to stop bacterial splash from soil. Avoid overhead irrigation and work only when leaves are dry. Rotate with non-solanaceous crops for 2 years.\n"
+            "• Biological Control: Apply bacteriophage bio-pesticides (AgriPhage) or Bacillus amyloliquefaciens early.\n"
+            "• Chemical Control: Spray Copper Hydroxide 53.8% WG (2.0 g/L) or Copper Oxychloride 50% WP (2.5 g/L) tank-mixed with Mancozeb 75% WP (2.0 g/L). Tank-mixing with mancozeb is essential to overcome copper resistance."
+        ),
+        "Early_Blight": (
+            "• Cultural Control: Stake vines and prune lower suckers up to 30–45 cm above ground to improve air movement. Apply clean straw or plastic mulch. Drip irrigate at root level. Rotate crops for 2–3 years.\n"
+            "• Organic Control: Preventive sprays of Bacillus subtilis or Trichoderma harzianum (2.5 g/L), copper soap, or potassium bicarbonate.\n"
+            "• Chemical Control: Preventive spray of Chlorothalonil 75% WP (2 g/L) or Mancozeb 75% WP (2 g/L) every 7–10 days. For curative action, apply Difenoconazole 25% EC (0.5 ml/L) or Azoxystrobin 23% SC (1 ml/L) at first sign of concentric lesions."
+        ),
+        "Late_Blight": (
+            "• Cultural Control: Immediately bag, remove, and destroy infected vines to halt airborne spore spread. Avoid late-day overhead watering. Plant resistant cultivars (e.g., Mountain Merit, Defiant PhR).\n"
+            "• Preventive Spray: Chlorothalonil 75% WP (2 g/L), Mancozeb 75% WP (2.5 g/L), or Copper Hydroxide (2.5 g/L).\n"
+            "• Curative/Systemic: At first sign of water-soaked greasy lesions, apply Cymoxanil + Mancozeb (2.0 g/L), Dimethomorph 50% WP (1.0 g/L), Metalaxyl-M + Mancozeb (2.5 g/L), or Mandipropamid (0.8 ml/L)."
+        ),
+        "Leaf_Mold": (
+            "• Environmental Control (Greenhouse/Tunnel): Increase ventilation with exhaust fans; keep relative humidity below 85%. Keep night temperatures above 18°C. Water only at soil level via drip lines; never wet foliage. Prune lower canopy foliage.\n"
+            "• Biological Control: Spray potassium bicarbonate (3–5 g/L) or Bacillus amyloliquefaciens.\n"
+            "• Chemical Control: Spray Chlorothalonil (2 g/L), Copper Hydroxide (2 g/L), Difenoconazole (0.5 ml/L), or Boscalid (0.5 g/L) when pale yellow upper spots with olive-brown velvety mold appear."
+        ),
+        "Mosaic_Virus": (
+            "• Sanitation & Hygiene: Contagious viral disease (ToMV) mechanically transmitted by hands, tools, clothes, and tobacco. NO chemical cure exists. Wash hands with soap or 20% non-fat milk solution before handling plants. Prohibit smoking/tobacco near crops. Disinfect tools in 10–20% bleach solution between vines. Rogue out and burn infected plants.\n"
+            "• Resistant Varieties: Plant certified ToMV-resistant hybrid varieties."
+        ),
+        "Septoria_Spot": (
+            "• Cultural Control: Remove lower infected leaves as soon as circular spots with gray centers appear. Stake plants and mulch soil to block soil splashing. Do not handle plants when wet with dew. Rotate crops for 3 years; clear nightshade weeds.\n"
+            "• Chemical Control: Preventive spray of Chlorothalonil (2 g/L), Mancozeb (2 g/L), or Copper Oxychloride (2.5 g/L) every 7–10 days from transplanting. Curative: Azoxystrobin (1 ml/L) or Difenoconazole (0.5 ml/L)."
+        ),
+        "Yellow_Virus": (
+            "• Physical Exclusion & Cultural: Viral disease (TYLCV) spread by whiteflies. NO direct chemical cure. Grow seedlings under 50-mesh insect netting. Use yellow sticky traps (15–20 traps/acre). Use reflective silver mulch to repel whiteflies. Rogue out and destroy stunted, cupped seedlings.\n"
+            "• Whitefly Vector Control: Spray Neem oil (10,000 ppm at 2–3 ml/L) early. Apply Acetamiprid 20% SP (0.2 g/L), Dinotefuran 20% SG (0.3 g/L), Spiromesifen 22.9% SC (1 ml/L), or Flonicamid 50% WG (0.3 g/L).\n"
+            "• Resistant Hybrids: Cultivate TYLCV-resistant varieties with Ty-1, Ty-2, or Ty-3 genes."
+        ),
+        "Healthy": "",
+
+        # Aliases / Legacy classes for backward compatibility
+        "Septoria_Leaf_Spot": (
+            "• Cultural Control: Remove lower infected leaves as soon as circular spots with gray centers appear. Stake plants and mulch soil to block soil splashing. Do not handle plants when wet with dew. Rotate crops for 3 years; clear nightshade weeds.\n"
+            "• Chemical Control: Preventive spray of Chlorothalonil (2 g/L), Mancozeb (2 g/L), or Copper Oxychloride (2.5 g/L) every 7–10 days from transplanting. Curative: Azoxystrobin (1 ml/L) or Difenoconazole (0.5 ml/L)."
+        ),
+        "Tomato_Mosaic_Virus": (
+            "• Sanitation & Hygiene: Contagious viral disease (ToMV) mechanically transmitted by hands, tools, clothes, and tobacco. NO chemical cure exists. Wash hands with soap or 20% non-fat milk solution before handling plants. Prohibit smoking/tobacco near crops. Disinfect tools in 10–20% bleach solution between vines. Rogue out and burn infected plants.\n"
+            "• Resistant Varieties: Plant certified ToMV-resistant hybrid varieties."
+        ),
+        "Tomato_Yellow_Leaf_Curl_Virus": (
+            "• Physical Exclusion & Cultural: Viral disease (TYLCV) spread by whiteflies. NO direct chemical cure. Grow seedlings under 50-mesh insect netting. Use yellow sticky traps (15–20 traps/acre). Use reflective silver mulch to repel whiteflies. Rogue out and destroy stunted, cupped seedlings.\n"
+            "• Whitefly Vector Control: Spray Neem oil (10,000 ppm at 2–3 ml/L) early. Apply Acetamiprid 20% SP (0.2 g/L), Dinotefuran 20% SG (0.3 g/L), Spiromesifen 22.9% SC (1 ml/L), or Flonicamid 50% WG (0.3 g/L).\n"
+            "• Resistant Hybrids: Cultivate TYLCV-resistant varieties with Ty-1, Ty-2, or Ty-3 genes."
+        ),
+        "Spider_Mites": (
+            "• Cultural & Physical: Spray undersides of leaves with strong water stream to dislodge mites and webbing. Keep plants well watered; drought-stressed, dusty conditions cause rapid outbreaks. Remove and bag heavily infested leaves.\n"
+            "• Biological Control: Release predatory mites (Phytoseiulus persimilis). Spray Neem oil (1–2%) or insecticidal potassium soaps covering leaf undersides.\n"
+            "• Chemical Control: Apply Spiromesifen 22.9% SC (1 ml/L), Abamectin 1.9% EC (0.5 ml/L), or Bifenazate 50% SC (0.5 ml/L). Avoid synthetic pyrethroids which kill beneficial predatory mites."
+        ),
+        "Target_Spot": (
+            "• Cultural Control: Avoid overhead watering; maintain wider row spacing (18–24 in) for quick canopy drying. Prune lower leaves to reduce humidity near soil level. Destroy crop residues after harvest.\n"
+            "• Chemical Control: Spray Chlorothalonil 75% WP (2 g/L) or Mancozeb (2 g/L) preventively. At disease onset, apply Azoxystrobin + Difenoconazole (1 ml/L), Fluxapyroxad + Pyraclostrobin, or Boscalid."
+        )
+    }
+}
+
+# Cotton alias
+CROP_REMEDIES["cotton"]["Healthy_Leaf"] = ""
+CROP_REMEDIES["cotton"]["Herbicide_Growth_Damage"] = (
+    "• Agronomic Assessment: Abiotic injury (usually synthetic auxin drift like 2,4-D or dicamba). Cannot be reversed with pesticides or hormonal sprays.\n"
+    "• Recovery Management: Check the terminal bud—if intact and new leaves emerge normal, the plant will outgrow moderate injury. Maintain regular irrigation to avoid moisture stress (avoid waterlogging).\n"
+    "• Canopy Support: Apply foliar spray of 1% 19:19:19 (NPK) or 1% urea once active growth resumes. Manage as a late-planted crop to allow time for maturity."
+)
+
+# Rice alias
+CROP_REMEDIES["rice"]["Narrow_Brown_Spot"] = (
+    "• Cultural Control: Apply recommended potash fertilizer as potassium deficiency substantially increases vulnerability. Practice field sanitation and crop rotation.\n"
+    "• Chemical Control: Spray Propiconazole 25% EC (1 ml/L) or Azoxystrobin 23% SC (1 ml/L) between late panicle differentiation and early heading."
+)
+
+if __name__ == "__main__":
+    out_json = os.path.join(os.path.dirname(__file__), "crop_remedies.json")
+    with open(out_json, "w", encoding="utf-8") as f:
+        json.dump(CROP_REMEDIES, f, indent=2, ensure_ascii=False)
+    print(f"Exported crop remedies to {out_json}")
+    for crop, classes in CROP_REMEDIES.items():
+        print(f"  {crop}: {len(classes)} classes")

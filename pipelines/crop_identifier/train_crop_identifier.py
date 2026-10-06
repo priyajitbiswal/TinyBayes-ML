@@ -1,3 +1,19 @@
+"""
+Crop Identifier Training Pipeline
+=================================
+Trains a gatekeeper Jacobi-DMR model to verify that an uploaded leaf image
+belongs to the user's selected crop (Cocoa, Cotton, Potato, Rice, Tomato)
+before running downstream disease diagnosis.
+
+Image Selection Priority:
+- For crops containing images from both TinyBayes and PlantDoc (Cotton, Potato, Tomato),
+  images from PlantDoc are prioritized because they represent natural in-field environments
+  and outdoor backgrounds.
+- For subclasses not present in PlantDoc (e.g. Potato Healthy), representative samples
+  from the dataset are included so the model recognizes healthy crop leaves.
+- Rice is 100% in-field PlantDoc images; Cocoa is 100% in-field Ghana farm images.
+"""
+
 import os
 import json
 import random
@@ -6,6 +22,8 @@ import numpy as np
 import pandas as pd
 from PIL import Image
 import onnxruntime as ort
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 # ==============================================================================
 # CONFIGURATION
@@ -18,8 +36,8 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..
 WORKSPACE_ROOT = os.path.abspath(os.path.join(PROJECT_ROOT, ".."))
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-PLANTDOC_BASE = os.path.join(PROJECT_ROOT, "data", "dataset")
-COCOA_BASE = os.path.join(PROJECT_ROOT, "data", "dataset", "cocoa")
+DATASET_BASE = os.path.join(PROJECT_ROOT, "data", "dataset")
+PLANTDOC_ARCHIVE = os.path.join(PROJECT_ROOT, "data", "archive", "PlantDoc")
 
 ONNX_MODEL_PATH = os.path.join(
     WORKSPACE_ROOT,
@@ -33,181 +51,147 @@ ASSET_MODEL_PATH = os.path.join(
 
 IMAGE_SIZE = (224, 224)
 CROPS = ["Cocoa", "Cotton", "Potato", "Rice", "Tomato"]
+TARGET_PER_CROP = 200  # 160 train + 40 val per crop (1,000 images total)
 
 # ImageNet normalization
 IMAGENET_MEAN = np.array([0.485, 0.456, 0.406], dtype=np.float32)
 IMAGENET_STD = np.array([0.229, 0.224, 0.225], dtype=np.float32)
 
 print("=" * 70, flush=True)
-print("TINYBAYES CROP IDENTIFIER TRAINING (PLANTDOC + COCOA DATASETS)", flush=True)
+print("TINYBAYES CROP IDENTIFIER TRAINING", flush=True)
 print("=" * 70, flush=True)
-print(f"Workspace root: {WORKSPACE_ROOT}", flush=True)
-print(f"Output directory: {OUTPUT_DIR}", flush=True)
-print(f"PlantDoc base: {PLANTDOC_BASE}", flush=True)
-print(f"Cocoa base: {COCOA_BASE}", flush=True)
-print(f"ONNX Feature Extractor: {ONNX_MODEL_PATH}", flush=True)
-print(f"Target crops: {CROPS}", flush=True)
+print(f"Dataset base:          {DATASET_BASE}", flush=True)
+print(f"PlantDoc archive:      {PLANTDOC_ARCHIVE}", flush=True)
+print(f"ONNX Model path:       {ONNX_MODEL_PATH}", flush=True)
+print(f"Asset output path:     {ASSET_MODEL_PATH}", flush=True)
+print(f"Target crops:          {CROPS}", flush=True)
+print(f"Samples per crop:      {TARGET_PER_CROP} (balanced across crops)", flush=True)
 
 # ==============================================================================
-# 1. DATASET SAMPLING (50 TRAIN + 15 VAL IMAGES PER CROP)
+# 1. PLANTDOC-PRIORITIZED DATASET SAMPLING
 # ==============================================================================
 print("\n" + "=" * 70, flush=True)
-print("1. SAMPLING DATASET (50 TRAIN + 15 VAL PER CROP, BALANCED ACROSS SUBCLASSES)", flush=True)
+print("1. SAMPLING DATASET (PRIORITIZING PLANTDOC IN-FIELD BACKGROUNDS)", flush=True)
 print("=" * 70, flush=True)
 
-def collect_crop_image_pools():
-    pools = {}
+# Index all PlantDoc filenames to prioritize in-field background images
+pd_filenames = set()
+for root, dirs, files in os.walk(PLANTDOC_ARCHIVE):
+    for f in files:
+        pd_filenames.add(f.lower())
 
-    # --- 1. Cocoa (from TinyBayes / amini_dataset) ---
-    cocoa_csv = os.path.join(COCOA_BASE, "Train.csv")
-    df_cocoa = pd.read_csv(cocoa_csv).drop_duplicates(subset=["Image_ID"])
-    cocoa_pool = {}
-    for cls in ["anthracnose", "cssvd", "healthy"]:
-        rows = df_cocoa[df_cocoa["class"] == cls]
-        paths = [
-            os.path.join(COCOA_BASE, row["ImagePath"].replace("/", os.sep))
-            for _, row in rows.iterrows()
-        ]
-        cocoa_pool[cls] = [p for p in paths if os.path.exists(p)]
-    pools["Cocoa"] = cocoa_pool
+print(f"Indexed {len(pd_filenames)} PlantDoc reference filenames.", flush=True)
 
-    # --- 2. Cotton, Potato, Rice, Tomato (from PlantDoc) ---
-    for crop in ["cotton", "potato", "rice", "tomato"]:
-        crop_title = crop.capitalize()
-        crop_dir = os.path.join(PLANTDOC_BASE, crop)
-        c_pool = {}
-        for sub in sorted(os.listdir(crop_dir)):
-            sub_dir = os.path.join(crop_dir, sub)
-            if os.path.isdir(sub_dir):
-                imgs = [
-                    os.path.join(sub_dir, f)
-                    for f in os.listdir(sub_dir)
-                    if f.lower().endswith((".jpg", ".jpeg", ".png"))
-                ]
-                c_pool[sub] = sorted(imgs)
-        pools[crop_title] = c_pool
-
-    return pools
-
-pools = collect_crop_image_pools()
-
-quotas_train = {
-    "Cocoa": {
-        "anthracnose": 17,
-        "cssvd": 17,
-        "healthy": 16
-    },
-    "Cotton": {
-        "bacterial_blight": 13,
-        "curl_virus": 13,
-        "fussarium_wilt": 12,
-        "healthy": 12
-    },
-    "Potato": {
-        "early blight": 25,
-        "late blight": 25
-    },
-    "Rice": {
-        "Bacterial Leaf Blight": 9,
-        "Brown Spot": 9,
-        "Healthy Rice Leaf": 8,
-        "Leaf Blast": 8,
-        "Leaf scald": 8,
-        "Sheath Blight": 8
-    },
-    "Tomato": {
-        "bacterial spot": 7,
-        "early blight": 6,
-        "healthy": 6,
-        "late blight": 6,
-        "leaf mold": 6,
-        "mosaic virus": 6,
-        "septoria spot": 7,
-        "yellow virus": 6
-    }
-}
-
-quotas_val = {
-    "Cocoa": {
-        "anthracnose": 5,
-        "cssvd": 5,
-        "healthy": 5
-    },
-    "Cotton": {
-        "bacterial_blight": 4,
-        "curl_virus": 4,
-        "fussarium_wilt": 4,
-        "healthy": 3
-    },
-    "Potato": {
-        "early blight": 8,
-        "late blight": 7
-    },
-    "Rice": {
-        "Bacterial Leaf Blight": 3,
-        "Brown Spot": 3,
-        "Healthy Rice Leaf": 3,
-        "Leaf Blast": 2,
-        "Leaf scald": 2,
-        "Sheath Blight": 2
-    },
-    "Tomato": {
-        "bacterial spot": 2,
-        "early blight": 2,
-        "healthy": 2,
-        "late blight": 2,
-        "leaf mold": 2,
-        "mosaic virus": 2,
-        "septoria spot": 2,
-        "yellow virus": 1
-    }
-}
-
-train_records = []
-val_records = []
+sampled_records = []
 
 for crop in CROPS:
-    crop_pool = pools[crop]
-    crop_train_count = 0
-    crop_val_count = 0
+    crop_dir = os.path.join(DATASET_BASE, crop.lower())
+    subdirs = [s for s in sorted(os.listdir(crop_dir)) if os.path.isdir(os.path.join(crop_dir, s)) and s != "run"]
 
-    print(f"\nSampling {crop} (Subclasses: {len(crop_pool)}):", flush=True)
-    for cls, target_train in quotas_train[crop].items():
-        target_val = quotas_val[crop][cls]
-        all_imgs = list(crop_pool[cls])
-        random.shuffle(all_imgs)
+    if crop == "Potato":
+        # PlantDoc has Early Blight (109) & Late Blight (97), but 0 Healthy.
+        # Take 75 Early Blight (PlantDoc) + 75 Late Blight (PlantDoc) + 50 Healthy (TinyBayes)
+        for sub in subdirs:
+            p = os.path.join(crop_dir, sub)
+            imgs = [f for f in os.listdir(p) if f.lower().endswith((".jpg", ".jpeg", ".png", ".bmp"))]
+            if sub == "Healthy":
+                chosen = [os.path.join(p, f) for f in imgs][:50]
+                for c in chosen:
+                    sampled_records.append({"crop": crop, "subclass": sub, "path": c, "is_plantdoc": False})
+            else:
+                pd_imgs = [os.path.join(p, f) for f in imgs if f.lower() in pd_filenames][:75]
+                for c in pd_imgs:
+                    sampled_records.append({"crop": crop, "subclass": sub, "path": c, "is_plantdoc": True})
 
-        total_needed = target_train + target_val
-        if len(all_imgs) < total_needed:
-            raise ValueError(f"Not enough images for {crop}/{cls}: have {len(all_imgs)}, need {total_needed}")
+    elif crop in ["Cotton", "Tomato"]:
+        # Prioritize 100% PlantDoc across subdirs; round-robin across subclasses for diversity
+        sub_pd = {}
+        for sub in subdirs:
+            p = os.path.join(crop_dir, sub)
+            imgs = [f for f in os.listdir(p) if f.lower().endswith((".jpg", ".jpeg", ".png", ".bmp"))]
+            pd_imgs = [os.path.join(p, f) for f in imgs if f.lower() in pd_filenames]
+            random.shuffle(pd_imgs)
+            sub_pd[sub] = pd_imgs
 
-        selected_train = all_imgs[:target_train]
-        selected_val = all_imgs[target_train:total_needed]
+        chosen = []
+        added = True
+        while len(chosen) < TARGET_PER_CROP and added:
+            added = False
+            for sub in subdirs:
+                if len(chosen) >= TARGET_PER_CROP:
+                    break
+                if sub_pd[sub]:
+                    chosen.append((sub_pd[sub].pop(), sub))
+                    added = True
 
-        for p in selected_train:
-            train_records.append({
-                "image_path": p,
-                "crop": crop,
-                "subclass": cls,
-                "image_name": os.path.basename(p)
-            })
+        for p, sub in chosen:
+            sampled_records.append({"crop": crop, "subclass": sub, "path": p, "is_plantdoc": True})
 
-        for p in selected_val:
-            val_records.append({
-                "image_path": p,
-                "crop": crop,
-                "subclass": cls,
-                "image_name": os.path.basename(p)
-            })
+    elif crop == "Rice":
+        # 100% PlantDoc images
+        sub_pd = {}
+        for sub in subdirs:
+            p = os.path.join(crop_dir, sub)
+            imgs = [os.path.join(p, f) for f in os.listdir(p) if f.lower().endswith((".jpg", ".jpeg", ".png", ".bmp"))]
+            random.shuffle(imgs)
+            sub_pd[sub] = imgs
 
-        crop_train_count += len(selected_train)
-        crop_val_count += len(selected_val)
-        print(f"  - {cls}: {len(selected_train)} train, {len(selected_val)} val", flush=True)
+        chosen = []
+        added = True
+        while len(chosen) < TARGET_PER_CROP and added:
+            added = False
+            for sub in subdirs:
+                if len(chosen) >= TARGET_PER_CROP:
+                    break
+                if sub_pd[sub]:
+                    chosen.append((sub_pd[sub].pop(), sub))
+                    added = True
 
-    print(f"  Total for {crop}: {crop_train_count} train, {crop_val_count} val", flush=True)
+        for p, sub in chosen:
+            sampled_records.append({"crop": crop, "subclass": sub, "path": p, "is_plantdoc": True})
 
-df_train = pd.DataFrame(train_records)
-df_val = pd.DataFrame(val_records)
+    elif crop == "Cocoa":
+        # 100% Amini dataset (real Ghana farm field images)
+        sub_pool = {}
+        for sub in subdirs:
+            p = os.path.join(crop_dir, sub)
+            imgs = [os.path.join(p, f) for f in os.listdir(p) if f.lower().endswith((".jpg", ".jpeg", ".png", ".bmp"))]
+            random.shuffle(imgs)
+            sub_pool[sub] = imgs
+
+        chosen = []
+        added = True
+        while len(chosen) < TARGET_PER_CROP and added:
+            added = False
+            for sub in subdirs:
+                if len(chosen) >= TARGET_PER_CROP:
+                    break
+                if sub_pool[sub]:
+                    chosen.append((sub_pool[sub].pop(), sub))
+                    added = True
+
+        for p, sub in chosen:
+            sampled_records.append({"crop": crop, "subclass": sub, "path": p, "is_plantdoc": False})
+
+df_all = pd.DataFrame(sampled_records)
+df_all["image_name"] = df_all["path"].apply(os.path.basename)
+
+print("\nSampled Dataset Distribution:", flush=True)
+summary_table = df_all.groupby(["crop", "is_plantdoc"]).size().unstack(fill_value=0)
+summary_table.columns = ["TinyBayes", "PlantDoc"]
+summary_table["Total"] = summary_table["TinyBayes"] + summary_table["PlantDoc"]
+print(summary_table.to_string(), flush=True)
+
+# Stratified 80/20 train/validation split
+df_train, df_val = train_test_split(
+    df_all,
+    test_size=0.20,
+    stratify=df_all["crop"],
+    random_state=RANDOM_SEED
+)
+
+df_train = df_train.reset_index(drop=True)
+df_val = df_val.reset_index(drop=True)
 
 # Save manifests
 train_manifest_path = os.path.join(OUTPUT_DIR, "train_dataset_manifest.csv")
@@ -215,15 +199,14 @@ val_manifest_path = os.path.join(OUTPUT_DIR, "val_dataset_manifest.csv")
 df_train.to_csv(train_manifest_path, index=False)
 df_val.to_csv(val_manifest_path, index=False)
 
-print("\nDataset Manifests Saved:", flush=True)
-print(f"Train: {train_manifest_path} (Total images: {len(df_train)})", flush=True)
-print(f"Validation: {val_manifest_path} (Total images: {len(df_val)})", flush=True)
+print(f"\nSaved Train Manifest: {train_manifest_path} ({len(df_train)} images)", flush=True)
+print(f"Saved Val Manifest:   {val_manifest_path} ({len(df_val)} images)", flush=True)
 
 # ==============================================================================
-# 2. FEATURE EXTRACTION
+# 2. MOBILENET FEATURE EXTRACTION
 # ==============================================================================
 print("\n" + "=" * 70, flush=True)
-print("2. EXTRACTING MOBILENET FEATURES (FULL IMAGE RESIZE - NO CROPPING)", flush=True)
+print("2. EXTRACTING MOBILENET-V3 FEATURES", flush=True)
 print("=" * 70, flush=True)
 
 session = ort.InferenceSession(ONNX_MODEL_PATH)
@@ -233,13 +216,11 @@ output_name = session.get_outputs()[0].name
 def extract_image_features(image_path):
     with Image.open(image_path) as img:
         img = img.convert("RGB")
-        # Full image resize directly to 224x224 without cropping or removing any parts
         img = img.resize(IMAGE_SIZE, Image.Resampling.BILINEAR)
         arr = np.array(img, dtype=np.float32) / 255.0
         arr = (arr - IMAGENET_MEAN) / IMAGENET_STD
         arr = arr.transpose(2, 0, 1)
         arr = np.expand_dims(arr, axis=0).astype(np.float32)
-
     features = session.run([output_name], {input_name: arr})[0]
     return features.flatten()
 
@@ -248,9 +229,9 @@ def extract_features_for_dataframe(df, desc="features"):
     t0 = time.time()
     feature_list = []
     for idx, row in df.iterrows():
-        feat = extract_image_features(row["image_path"])
+        feat = extract_image_features(row["path"])
         feature_list.append(feat)
-        if (idx + 1) % 50 == 0 or (idx + 1) == len(df):
+        if (idx + 1) % 100 == 0 or (idx + 1) == len(df):
             elapsed = time.time() - t0
             print(f"  Processed {idx + 1}/{len(df)} images ({elapsed:.1f}s, {elapsed / (idx + 1) * 1000:.1f} ms/img)", flush=True)
     return np.array(feature_list, dtype=np.float32)
@@ -278,15 +259,14 @@ print(f"Saved training features to:   {train_feat_path}", flush=True)
 print(f"Saved validation features to: {val_feat_path}", flush=True)
 
 # ==============================================================================
-# 3. TRAIN JACOBI-DMR CROP IDENTIFIER MODEL
+# 3. TRAIN JACOBI-DMR CROP IDENTIFIER
 # ==============================================================================
 print("\n" + "=" * 70, flush=True)
-print("3. TRAINING JACOBI-DMR CROP IDENTIFIER MODEL", flush=True)
+print("3. TRAINING REGULARIZED JACOBI-DMR CROP IDENTIFIER", flush=True)
 print("=" * 70, flush=True)
 
 t_jacobi_start = time.time()
 
-# One-hot encoding
 y_train_df = pd.DataFrame({"crop": y_train})
 y_one_hot = pd.get_dummies(y_train_df["crop"])[CROPS]
 
@@ -294,16 +274,14 @@ N_train = len(X_train)
 a = b = 1.0 / N_train
 k = 1.0
 
-# Hyperparameter for regularized minimum-norm Jacobi solution
 lambda_reg = 5.0
 identity = np.eye(576, dtype=np.float32)
-
-# Normal equations: (X^T X + lambda I) beta = X^T eta
 XtX_reg = (X_train.T @ X_train) + (lambda_reg * identity)
 
 betas = {}
 for crop in CROPS:
-    eta = np.log((y_one_hot[crop].values + a) / (1.0 + k * b))
+    y_c = y_one_hot[crop].values
+    eta = np.log((y_c + a) / (1.0 + k * b))
     beta = np.linalg.solve(XtX_reg, X_train.T @ eta)
     betas[crop] = beta
 
@@ -314,54 +292,35 @@ print(f"Jacobi-DMR training completed in {t_jacobi_train * 1000:.2f} ms (lambda=
 # 4. EVALUATION & ACCURACY REPORTING
 # ==============================================================================
 print("\n" + "=" * 70, flush=True)
-print("4. EVALUATION AND ACCURACY RESULTS", flush=True)
+print("4. EVALUATION & ACCURACY RESULTS", flush=True)
 print("=" * 70, flush=True)
 
 def predict_jacobi(X):
-    scores = {}
-    for crop in CROPS:
-        scores[crop] = X @ betas[crop]
-    scores_df = pd.DataFrame(scores)
-    return scores_df.idxmax(axis=1).values
+    scores = {crop: X @ betas[crop] for crop in CROPS}
+    return pd.DataFrame(scores).idxmax(axis=1).values
 
-def compute_metrics(y_true, y_pred, labels):
-    acc = np.mean([t == p for t, p in zip(y_true, y_pred)])
-    cm = pd.DataFrame(0, index=[f"True_{l}" for l in labels], columns=[f"Pred_{l}" for l in labels])
-    for t, p in zip(y_true, y_pred):
-        cm.loc[f"True_{t}", f"Pred_{p}"] += 1
-
-    report_rows = []
-    for l in labels:
-        tp = cm.loc[f"True_{l}", f"Pred_{l}"]
-        fp = cm[f"Pred_{l}"].sum() - tp
-        fn = cm.loc[f"True_{l}"].sum() - tp
-        prec = tp / (tp + fp) if (tp + fp) > 0 else 0.0
-        rec = tp / (tp + fn) if (tp + fn) > 0 else 0.0
-        f1 = 2 * prec * rec / (prec + rec) if (prec + rec) > 0 else 0.0
-        support = cm.loc[f"True_{l}"].sum()
-        report_rows.append({"precision": prec, "recall": rec, "f1-score": f1, "support": support})
-    report_df = pd.DataFrame(report_rows, index=labels)
-    return acc, cm, report_df
-
-# Predict on Train
 y_train_pred = predict_jacobi(X_train)
-train_acc = np.mean([t == p for t, p in zip(y_train, y_train_pred)])
-
-# Predict on Validation
 y_val_pred = predict_jacobi(X_val)
-val_acc, cm_df, report_df = compute_metrics(y_val, y_val_pred, CROPS)
+
+train_acc = accuracy_score(y_train, y_train_pred)
+val_acc = accuracy_score(y_val, y_val_pred)
 
 print(f"Training Accuracy:   {train_acc * 100:.2f}% ({np.sum(y_train == y_train_pred)}/{len(y_train)})", flush=True)
 print(f"Validation Accuracy: {val_acc * 100:.2f}% ({np.sum(y_val == y_val_pred)}/{len(y_val)})", flush=True)
 
 print("\n--- Validation Classification Report ---", flush=True)
-print(report_df.round(4).to_string(), flush=True)
+print(classification_report(y_val, y_val_pred, labels=CROPS, digits=4), flush=True)
 
-print("\n--- Validation Confusion Matrix ---", flush=True)
+print("--- Validation Confusion Matrix ---", flush=True)
+cm_df = pd.DataFrame(
+    confusion_matrix(y_val, y_val_pred, labels=CROPS),
+    index=[f"True_{c}" for c in CROPS],
+    columns=[f"Pred_{c}" for c in CROPS]
+)
 print(cm_df.to_string(), flush=True)
 
 # ==============================================================================
-# 5. TESTING REAL INTERNET PHOTO
+# 5. ONLINE REAL-WORLD PHOTO TEST
 # ==============================================================================
 print("\n" + "=" * 70, flush=True)
 print("5. TESTING REAL INTERNET PHOTO", flush=True)
@@ -385,18 +344,19 @@ if os.path.exists(online_tomato_path):
     print(f"Status: {'PASS' if best_c == 'Tomato' else 'FAIL'}", flush=True)
 
 # ==============================================================================
-# 6. SAVE COEFFICIENTS & CLASS NAMES
+# 6. EXPORT COEFFICIENTS & ARTIFACTS
 # ==============================================================================
 print("\n" + "=" * 70, flush=True)
 print("6. EXPORTING MODEL ARTIFACTS", flush=True)
 print("=" * 70, flush=True)
 
 coeff_output_path = os.path.join(OUTPUT_DIR, "crop_identifier_coefficients.json")
-coeff_dict = {crop: betas[crop].tolist() for crop in CROPS}
+coeff_dict = {crop: [float(v) for v in betas[crop]] for crop in CROPS}
 
 with open(coeff_output_path, "w", encoding="utf-8") as f:
     json.dump(coeff_dict, f, indent=2)
 
+os.makedirs(os.path.dirname(ASSET_MODEL_PATH), exist_ok=True)
 with open(ASSET_MODEL_PATH, "w", encoding="utf-8") as f:
     json.dump(coeff_dict, f, indent=2)
 
@@ -442,16 +402,15 @@ def verify_crop_leaf(image_path, selected_crop_by_user):
 
     return is_match, predicted_crop, confidence, message
 
-# Test cases: matching vs mismatched
 demo_cases = [
-    (val_records[0]["image_path"], "Cocoa"),      # Cocoa matching
-    (val_records[0]["image_path"], "Cotton"),     # Cocoa chosen as Cotton -> reject
-    (val_records[15]["image_path"], "Cotton"),    # Cotton matching
-    (val_records[15]["image_path"], "Tomato"),    # Cotton chosen as Tomato -> reject
-    (val_records[30]["image_path"], "Potato"),    # Potato matching
-    (val_records[45]["image_path"], "Rice"),      # Rice matching
-    (val_records[60]["image_path"], "Tomato"),    # Tomato matching
-    (val_records[60]["image_path"], "Cotton"),    # Tomato chosen as Cotton -> reject
+    (df_val[df_val["crop"] == "Cocoa"].iloc[0]["path"], "Cocoa"),
+    (df_val[df_val["crop"] == "Cocoa"].iloc[0]["path"], "Cotton"),
+    (df_val[df_val["crop"] == "Cotton"].iloc[0]["path"], "Cotton"),
+    (df_val[df_val["crop"] == "Cotton"].iloc[0]["path"], "Tomato"),
+    (df_val[df_val["crop"] == "Potato"].iloc[0]["path"], "Potato"),
+    (df_val[df_val["crop"] == "Rice"].iloc[0]["path"], "Rice"),
+    (df_val[df_val["crop"] == "Tomato"].iloc[0]["path"], "Tomato"),
+    (df_val[df_val["crop"] == "Tomato"].iloc[0]["path"], "Cotton"),
 ]
 
 for img_p, selected_c in demo_cases:

@@ -1,9 +1,9 @@
 # ==============================================================================
 # TinyBayes-ML Dependencies
-# Compatible with Python 3.10 - 3.12+
+# Compatible with Python 3.10 - 3.13+
 # ==============================================================================
 
-# Core ML & Inference Pipelines
+# Core Machine Learning & Data Processing
 numpy>=1.26.0
 pandas>=2.2.0
 scipy>=1.13.0
@@ -11,14 +11,6 @@ scikit-learn>=1.4.0
 pillow>=10.2.0
 onnxruntime>=1.18.0
 
-# Feature Extraction & Data Processing
-torch>=2.2.0
-torchvision>=0.17.0
-opencv-python>=4.9.0
-tqdm>=4.66.0
-
 # Jupyter Notebook Execution & Evaluation
 jupyter>=1.0.0
 ipykernel>=6.29.0
-matplotlib>=3.8.0
-seaborn>=0.13.0

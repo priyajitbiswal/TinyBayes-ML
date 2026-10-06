@@ -1,5 +1,7 @@
-# Local dataset images and archive backups (not committed to git)
-data/
+data/*
+!data/jacobi_coefficients.json
+data/dataset/
+data/archive/
 
 # Python and Jupyter
 __pycache__/

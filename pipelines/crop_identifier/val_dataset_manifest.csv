@@ -1,76 +1,201 @@
-image_path,crop,subclass,image_name
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_XOXkgf.jpg,Cocoa,anthracnose,ID_XOXkgf.jpg
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_BiBTCj.jpeg,Cocoa,anthracnose,ID_BiBTCj.jpeg
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_uymYko.jpeg,Cocoa,anthracnose,ID_uymYko.jpeg
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_TqjdQX.jpeg,Cocoa,anthracnose,ID_TqjdQX.jpeg
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_zOEJFj.jpg,Cocoa,anthracnose,ID_zOEJFj.jpg
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_WJDjT3.jpg,Cocoa,cssvd,ID_WJDjT3.jpg
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_iKOnJ4.jpg,Cocoa,cssvd,ID_iKOnJ4.jpg
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_pq4fCu.jpg,Cocoa,cssvd,ID_pq4fCu.jpg
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_xceygB.jpg,Cocoa,cssvd,ID_xceygB.jpg
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_FSBAv0.jpg,Cocoa,cssvd,ID_FSBAv0.jpg
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_eYveox.JPG,Cocoa,healthy,ID_eYveox.JPG
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_mHSpdC.jpeg,Cocoa,healthy,ID_mHSpdC.jpeg
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_Vy4Jz3.jpg,Cocoa,healthy,ID_Vy4Jz3.jpg
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_dQzSLh.jpg,Cocoa,healthy,ID_dQzSLh.jpg
-c:\Users\priya\Downloads\ok\TinyBayes\Cocoa\amini_dataset\dataset\images\train\ID_jaiRz0.jpeg,Cocoa,healthy,ID_jaiRz0.jpeg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\bacterial_blight\bact231.jpg,Cotton,bacterial_blight,bact231.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\bacterial_blight\bact227.jpg,Cotton,bacterial_blight,bact227.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\bacterial_blight\bact159.jpg,Cotton,bacterial_blight,bact159.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\bacterial_blight\bact201.jpg,Cotton,bacterial_blight,bact201.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\curl_virus\curl421.jpg,Cotton,curl_virus,curl421.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\curl_virus\curl159.jpg,Cotton,curl_virus,curl159.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\curl_virus\curl374.jpg,Cotton,curl_virus,curl374.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\curl_virus\curl330.jpg,Cotton,curl_virus,curl330.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\fussarium_wilt\fus74.jpg,Cotton,fussarium_wilt,fus74.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\fussarium_wilt\fus346.png,Cotton,fussarium_wilt,fus346.png
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\fussarium_wilt\fus177.jpg,Cotton,fussarium_wilt,fus177.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\fussarium_wilt\fus130.jpg,Cotton,fussarium_wilt,fus130.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\healthy\h271.jpg,Cotton,healthy,h271.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\healthy\images (4).jpg,Cotton,healthy,images (4).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\cotton\healthy\h213.png,Cotton,healthy,h213.png
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (46).jpg,Potato,early blight,Potato leaf early blight (46).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (5).jpg,Potato,early blight,Potato leaf early blight (5).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (80).jpg,Potato,early blight,Potato leaf early blight (80).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (65).jpg,Potato,early blight,Potato leaf early blight (65).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (100).jpg,Potato,early blight,Potato leaf early blight (100).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (56).jpg,Potato,early blight,Potato leaf early blight (56).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (48).jpg,Potato,early blight,Potato leaf early blight (48).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\early blight\Potato leaf early blight (29).jpg,Potato,early blight,Potato leaf early blight (29).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\late blight\Potato leaf late blight (33).jpg,Potato,late blight,Potato leaf late blight (33).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\late blight\Potato leaf late blight (34).jpg,Potato,late blight,Potato leaf late blight (34).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\late blight\Potato leaf late blight (50).jpg,Potato,late blight,Potato leaf late blight (50).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\late blight\Potato leaf late blight (57).jpg,Potato,late blight,Potato leaf late blight (57).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\late blight\Potato leaf late blight (4).jpg,Potato,late blight,Potato leaf late blight (4).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\late blight\Potato leaf late blight (40).jpg,Potato,late blight,Potato leaf late blight (40).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\potato\late blight\Potato leaf late blight (25).jpg,Potato,late blight,Potato leaf late blight (25).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Bacterial Leaf Blight\aug_0_59.jpg,Rice,Bacterial Leaf Blight,aug_0_59.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Bacterial Leaf Blight\aug_0_2990.jpg,Rice,Bacterial Leaf Blight,aug_0_2990.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Bacterial Leaf Blight\aug_0_1819.jpg,Rice,Bacterial Leaf Blight,aug_0_1819.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Brown Spot\aug_0_6131.jpg,Rice,Brown Spot,aug_0_6131.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Brown Spot\aug_0_5104.jpg,Rice,Brown Spot,aug_0_5104.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Brown Spot\IMG_20231014_173306.jpg,Rice,Brown Spot,IMG_20231014_173306.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Healthy Rice Leaf\Healthy_rice_leaf (127).jpg,Rice,Healthy Rice Leaf,Healthy_rice_leaf (127).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Healthy Rice Leaf\aug_0_7735.jpg,Rice,Healthy Rice Leaf,aug_0_7735.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Healthy Rice Leaf\aug_0_7127.jpg,Rice,Healthy Rice Leaf,aug_0_7127.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Leaf Blast\aug_0_379.jpg,Rice,Leaf Blast,aug_0_379.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Leaf Blast\IMG_20231006_165457.jpg,Rice,Leaf Blast,IMG_20231006_165457.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Leaf scald\aug_0_3619.jpg,Rice,Leaf scald,aug_0_3619.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Leaf scald\aug_0_1060.jpg,Rice,Leaf scald,aug_0_1060.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Sheath Blight\IMG_20231018_143300.jpg,Rice,Sheath Blight,IMG_20231018_143300.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\rice\Sheath Blight\aug_0_8828.jpg,Rice,Sheath Blight,aug_0_8828.jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\bacterial spot\Tomato leaf bacterial spot (7).jpg,Tomato,bacterial spot,Tomato leaf bacterial spot (7).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\bacterial spot\Tomato leaf bacterial spot (69).jpg,Tomato,bacterial spot,Tomato leaf bacterial spot (69).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\early blight\Tomato Early blight leaf (37).jpg,Tomato,early blight,Tomato Early blight leaf (37).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\early blight\Tomato Early blight leaf (45).jpg,Tomato,early blight,Tomato Early blight leaf (45).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\healthy\Tomato leaf (23).jpg,Tomato,healthy,Tomato leaf (23).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\healthy\Tomato leaf (46).jpg,Tomato,healthy,Tomato leaf (46).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\late blight\Tomato leaf late blight (6).jpg,Tomato,late blight,Tomato leaf late blight (6).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\late blight\Tomato leaf late blight (72).jpg,Tomato,late blight,Tomato leaf late blight (72).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\leaf mold\Tomato mold leaf (17).jpg,Tomato,leaf mold,Tomato mold leaf (17).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\leaf mold\Tomato mold leaf (48).jpg,Tomato,leaf mold,Tomato mold leaf (48).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\mosaic virus\Tomato leaf mosaic virus (4).jpg,Tomato,mosaic virus,Tomato leaf mosaic virus (4).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\mosaic virus\Tomato leaf mosaic virus (22).jpg,Tomato,mosaic virus,Tomato leaf mosaic virus (22).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\septoria spot\Tomato Septoria leaf spot (39).jpg,Tomato,septoria spot,Tomato Septoria leaf spot (39).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\septoria spot\Tomato Septoria leaf spot (38).jpg,Tomato,septoria spot,Tomato Septoria leaf spot (38).jpg
-c:\Users\priya\Downloads\ok\CropIdentifier\PlantDoc\tomato\yellow virus\Tomato leaf yellow virus (7).jpg,Tomato,yellow virus,Tomato leaf yellow virus (7).jpg
+crop,subclass,path,is_plantdoc,image_name
+Potato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Late_Blight\Potato leaf late blight (48).jpg,True,Potato leaf late blight (48).jpg
+Cocoa,healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\healthy\ID_pTosIS.jpg,False,ID_pTosIS.jpg
+Cotton,Curl_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Curl_Virus\curl381.jpg,True,curl381.jpg
+Cotton,Fussarium_Wilt,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Fussarium_Wilt\fus87.jpg,True,fus87.jpg
+Rice,Brown_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Brown_Spot\aug_0_8049.jpg,True,aug_0_8049.jpg
+Cocoa,healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\healthy\ID_Qjumv2.jpg,False,ID_Qjumv2.jpg
+Potato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Healthy\4bbccfb6-5720-4c80-9b37-0c3ed8999c9f___RS_HL 1791.JPG,False,4bbccfb6-5720-4c80-9b37-0c3ed8999c9f___RS_HL 1791.JPG
+Rice,Brown_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Brown_Spot\aug_0_5727.jpg,True,aug_0_5727.jpg
+Potato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Late_Blight\Potato leaf late blight (27).jpg,True,Potato leaf late blight (27).jpg
+Tomato,Leaf_Mold,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Leaf_Mold\Tomato mold leaf (34).jpg,True,Tomato mold leaf (34).jpg
+Cocoa,anthracnose,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\anthracnose\ID_eYDUdt.jpeg,False,ID_eYDUdt.jpeg
+Potato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Early_Blight\Potato leaf early blight (14).jpg,True,Potato leaf early blight (14).jpg
+Cocoa,anthracnose,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\anthracnose\ID_tyIFpj.jpeg,False,ID_tyIFpj.jpeg
+Rice,Brown_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Brown_Spot\aug_0_7957.jpg,True,aug_0_7957.jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_UIprDv.jpg,False,ID_UIprDv.jpg
+Rice,Bacterial_Leaf_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Bacterial_Leaf_Blight\aug_0_1570.jpg,True,aug_0_1570.jpg
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h113.jpg,True,h113.jpg
+Tomato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Late_Blight\Tomato leaf late blight (84).jpg,True,Tomato leaf late blight (84).jpg
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h415.jpg,True,h415.jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_SEj6z0.jpg,False,ID_SEj6z0.jpg
+Tomato,Leaf_Mold,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Leaf_Mold\Tomato mold leaf (14).jpg,True,Tomato mold leaf (14).jpg
+Potato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Early_Blight\Potato leaf early blight (1).jpg,True,Potato leaf early blight (1).jpg
+Tomato,Bacterial_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Bacterial_Spot\Tomato leaf bacterial spot (20).jpg,True,Tomato leaf bacterial spot (20).jpg
+Tomato,Leaf_Mold,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Leaf_Mold\Tomato mold leaf (47).jpg,True,Tomato mold leaf (47).jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_ilCNua.jpg,False,ID_ilCNua.jpg
+Potato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Healthy\163ada72-4288-4f85-a3c1-feed23c8d1de___RS_HL 1940.JPG,False,163ada72-4288-4f85-a3c1-feed23c8d1de___RS_HL 1940.JPG
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h371.jpg,True,h371.jpg
+Cotton,Fussarium_Wilt,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Fussarium_Wilt\fus48.jpg,True,fus48.jpg
+Rice,Leaf_Scald,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Leaf_Scald\aug_0_3356.jpg,True,aug_0_3356.jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_Zg3fEP.jpg,False,ID_Zg3fEP.jpg
+Cotton,Curl_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Curl_Virus\curl328.jpg,True,curl328.jpg
+Potato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Early_Blight\Potato leaf early blight (2).jpg,True,Potato leaf early blight (2).jpg
+Cocoa,anthracnose,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\anthracnose\ID_Li5kKi.jpg,False,ID_Li5kKi.jpg
+Rice,Brown_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Brown_Spot\aug_0_152.jpg,True,aug_0_152.jpg
+Cocoa,healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\healthy\ID_aavMun.jpg,False,ID_aavMun.jpg
+Rice,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Healthy\Healthy_rice_leaf (69).jpg,True,Healthy_rice_leaf (69).jpg
+Potato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Healthy\43fd6ace-3712-494a-9aba-de5482d22561___RS_HL 1968.JPG,False,43fd6ace-3712-494a-9aba-de5482d22561___RS_HL 1968.JPG
+Cotton,Fussarium_Wilt,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Fussarium_Wilt\fus5.jpg,True,fus5.jpg
+Cocoa,healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\healthy\ID_c3ocB8.jpeg,False,ID_c3ocB8.jpeg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_mzmx8R.jpg,False,ID_mzmx8R.jpg
+Potato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Early_Blight\Potato leaf early blight (17).jpg,True,Potato leaf early blight (17).jpg
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h201.jpg,True,h201.jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_Ti7HqH.jpg,False,ID_Ti7HqH.jpg
+Rice,Leaf_Scald,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Leaf_Scald\aug_0_331.jpg,True,aug_0_331.jpg
+Cotton,Bacterial_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Bacterial_Blight\bact84.jpg,True,bact84.jpg
+Cotton,Bacterial_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Bacterial_Blight\bact164.jpg,True,bact164.jpg
+Tomato,Leaf_Mold,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Leaf_Mold\Tomato mold leaf (69).jpg,True,Tomato mold leaf (69).jpg
+Potato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Early_Blight\Potato leaf early blight (52).jpg,True,Potato leaf early blight (52).jpg
+Rice,Sheath_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Sheath_Blight\aug_0_9935.jpg,True,aug_0_9935.jpg
+Cotton,Bacterial_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Bacterial_Blight\bact221.jpg,True,bact221.jpg
+Cocoa,anthracnose,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\anthracnose\ID_ToNqcZ.jpeg,False,ID_ToNqcZ.jpeg
+Rice,Brown_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Brown_Spot\aug_0_4871.jpg,True,aug_0_4871.jpg
+Rice,Bacterial_Leaf_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Bacterial_Leaf_Blight\aug_0_3208.jpg,True,aug_0_3208.jpg
+Potato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Early_Blight\Potato leaf early blight (62).jpg,True,Potato leaf early blight (62).jpg
+Cocoa,healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\healthy\ID_wwXHHl.jpeg,False,ID_wwXHHl.jpeg
+Potato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Early_Blight\Potato leaf early blight (30).jpg,True,Potato leaf early blight (30).jpg
+Rice,Brown_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Brown_Spot\aug_0_8545.jpg,True,aug_0_8545.jpg
+Tomato,Leaf_Mold,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Leaf_Mold\Tomato mold leaf (59).jpg,True,Tomato mold leaf (59).jpg
+Potato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Late_Blight\Potato leaf late blight (26).jpg,True,Potato leaf late blight (26).jpg
+Potato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Late_Blight\Potato leaf late blight (12).jpg,True,Potato leaf late blight (12).jpg
+Potato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Healthy\20ac28d6-5708-4e31-8676-1b1979de094f___RS_HL 1735.JPG,False,20ac28d6-5708-4e31-8676-1b1979de094f___RS_HL 1735.JPG
+Rice,Bacterial_Leaf_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Bacterial_Leaf_Blight\aug_0_5186.jpg,True,aug_0_5186.jpg
+Tomato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Late_Blight\Tomato leaf late blight (88).jpg,True,Tomato leaf late blight (88).jpg
+Rice,Leaf_Scald,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Leaf_Scald\aug_0_6239.jpg,True,aug_0_6239.jpg
+Tomato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Healthy\Tomato leaf (42).jpg,True,Tomato leaf (42).jpg
+Tomato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Early_Blight\Tomato Early blight leaf (31).jpg,True,Tomato Early blight leaf (31).jpg
+Potato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Late_Blight\Potato leaf late blight (61).jpg,True,Potato leaf late blight (61).jpg
+Cotton,Curl_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Curl_Virus\curl323.jpg,True,curl323.jpg
+Potato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Healthy\3f369e63-81eb-4194-a145-df9ed91abc5d___RS_HL 1745.JPG,False,3f369e63-81eb-4194-a145-df9ed91abc5d___RS_HL 1745.JPG
+Rice,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Healthy\Healthy_rice_leaf (154).jpg,True,Healthy_rice_leaf (154).jpg
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h173.jpg,True,h173.jpg
+Cocoa,healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\healthy\ID_PiBgoz.jpg,False,ID_PiBgoz.jpg
+Rice,Sheath_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Sheath_Blight\Sheath_Blight (53).jpg,True,Sheath_Blight (53).jpg
+Tomato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Healthy\Tomato leaf (43).jpg,True,Tomato leaf (43).jpg
+Rice,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Healthy\aug_0_1583.jpg,True,aug_0_1583.jpg
+Tomato,Leaf_Mold,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Leaf_Mold\Tomato mold leaf (8).jpg,True,Tomato mold leaf (8).jpg
+Potato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Healthy\415ac4a2-8f16-4052-880e-1e1f208965f0___RS_HL 1884.JPG,False,415ac4a2-8f16-4052-880e-1e1f208965f0___RS_HL 1884.JPG
+Cocoa,anthracnose,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\anthracnose\ID_ZpcJbg.jpg,False,ID_ZpcJbg.jpg
+Rice,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Healthy\Healthy_rice_leaf (146).jpg,True,Healthy_rice_leaf (146).jpg
+Potato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Late_Blight\Potato leaf late blight (6).jpg,True,Potato leaf late blight (6).jpg
+Potato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Healthy\31a09d39-6791-4ecb-8f44-af2ed85dbd33___RS_HL 1970.JPG,False,31a09d39-6791-4ecb-8f44-af2ed85dbd33___RS_HL 1970.JPG
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h344.jpg,True,h344.jpg
+Rice,Bacterial_Leaf_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Bacterial_Leaf_Blight\aug_0_4545.jpg,True,aug_0_4545.jpg
+Rice,Leaf_Blast,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Leaf_Blast\aug_0_9390.jpg,True,aug_0_9390.jpg
+Tomato,Mosaic_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Mosaic_Virus\Tomato leaf mosaic virus (7).jpg,True,Tomato leaf mosaic virus (7).jpg
+Cotton,Bacterial_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Bacterial_Blight\bact190.png,True,bact190.png
+Tomato,Bacterial_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Bacterial_Spot\Tomato leaf bacterial spot (14).jpg,True,Tomato leaf bacterial spot (14).jpg
+Tomato,Yellow_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Yellow_Virus\Tomato leaf yellow virus (40).jpg,True,Tomato leaf yellow virus (40).jpg
+Tomato,Mosaic_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Mosaic_Virus\Tomato leaf mosaic virus (15).jpg,True,Tomato leaf mosaic virus (15).jpg
+Rice,Brown_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Brown_Spot\aug_0_8422.jpg,True,aug_0_8422.jpg
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h418.jpg,True,h418.jpg
+Tomato,Bacterial_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Bacterial_Spot\Tomato leaf bacterial spot (69).jpg,True,Tomato leaf bacterial spot (69).jpg
+Tomato,Septoria_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Septoria_Spot\Tomato Septoria leaf spot (57).jpg,True,Tomato Septoria leaf spot (57).jpg
+Potato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Healthy\170f1f57-0fd4-421f-9c82-3b1804be63ad___RS_HL 1771.JPG,False,170f1f57-0fd4-421f-9c82-3b1804be63ad___RS_HL 1771.JPG
+Potato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Healthy\23f4d3b1-23f4-43fb-96c2-dae37224ec74___RS_HL 1803.JPG,False,23f4d3b1-23f4-43fb-96c2-dae37224ec74___RS_HL 1803.JPG
+Rice,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Healthy\aug_0_1351.jpg,True,aug_0_1351.jpg
+Tomato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Late_Blight\Tomato leaf late blight (53).jpg,True,Tomato leaf late blight (53).jpg
+Rice,Leaf_Scald,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Leaf_Scald\aug_0_5551.jpg,True,aug_0_5551.jpg
+Cotton,Curl_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Curl_Virus\curl201.jpg,True,curl201.jpg
+Cotton,Fussarium_Wilt,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Fussarium_Wilt\fus64.jpg,True,fus64.jpg
+Potato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Early_Blight\Potato leaf early blight (57).jpg,True,Potato leaf early blight (57).jpg
+Potato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Late_Blight\Potato leaf late blight (29).jpg,True,Potato leaf late blight (29).jpg
+Cotton,Bacterial_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Bacterial_Blight\bact157.jpg,True,bact157.jpg
+Tomato,Bacterial_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Bacterial_Spot\Tomato leaf bacterial spot (51).jpg,True,Tomato leaf bacterial spot (51).jpg
+Tomato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Healthy\Tomato leaf (21).jpg,True,Tomato leaf (21).jpg
+Rice,Sheath_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Sheath_Blight\aug_0_8090.jpg,True,aug_0_8090.jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_T3jhqx.jpg,False,ID_T3jhqx.jpg
+Tomato,Bacterial_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Bacterial_Spot\Tomato leaf bacterial spot (66).jpg,True,Tomato leaf bacterial spot (66).jpg
+Tomato,Leaf_Mold,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Leaf_Mold\Tomato mold leaf (41).jpg,True,Tomato mold leaf (41).jpg
+Rice,Leaf_Scald,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Leaf_Scald\aug_0_712.jpg,True,aug_0_712.jpg
+Tomato,Mosaic_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Mosaic_Virus\Tomato leaf mosaic virus (19).jpg,True,Tomato leaf mosaic virus (19).jpg
+Tomato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Early_Blight\Tomato Early blight leaf (22).jpg,True,Tomato Early blight leaf (22).jpg
+Cotton,Fussarium_Wilt,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Fussarium_Wilt\Figure-2B.png,True,Figure-2B.png
+Cotton,Fussarium_Wilt,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Fussarium_Wilt\fus214.jpg,True,fus214.jpg
+Rice,Brown_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Brown_Spot\aug_0_7986.jpg,True,aug_0_7986.jpg
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h402.jpg,True,h402.jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_UbmA8v.jpeg,False,ID_UbmA8v.jpeg
+Cocoa,anthracnose,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\anthracnose\ID_BerVLr.jpg,False,ID_BerVLr.jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_OHYXfr.jpg,False,ID_OHYXfr.jpg
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h391.jpg,True,h391.jpg
+Cocoa,healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\healthy\ID_LTHG5W.jpg,False,ID_LTHG5W.jpg
+Cotton,Curl_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Curl_Virus\curl24.jpg,True,curl24.jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_kM4ZMS.jpg,False,ID_kM4ZMS.jpg
+Tomato,Leaf_Mold,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Leaf_Mold\Tomato mold leaf (13).jpg,True,Tomato mold leaf (13).jpg
+Tomato,Mosaic_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Mosaic_Virus\Tomato leaf mosaic virus (25).jpg,True,Tomato leaf mosaic virus (25).jpg
+Rice,Leaf_Scald,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Leaf_Scald\aug_0_1570.jpg,True,aug_0_1570.jpg
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h302.jpg,True,h302.jpg
+Rice,Leaf_Scald,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Leaf_Scald\aug_0_6040.jpg,True,aug_0_6040.jpg
+Cocoa,anthracnose,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\anthracnose\ID_QZyOk7.jpg,False,ID_QZyOk7.jpg
+Tomato,Septoria_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Septoria_Spot\Tomato Septoria leaf spot (91).jpg,True,Tomato Septoria leaf spot (91).jpg
+Cocoa,healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\healthy\ID_PHJ5tj.jpg,False,ID_PHJ5tj.jpg
+Potato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Late_Blight\Potato leaf late blight (1).jpg,True,Potato leaf late blight (1).jpg
+Rice,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Healthy\aug_0_9339.jpg,True,aug_0_9339.jpg
+Cotton,Fussarium_Wilt,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Fussarium_Wilt\fus351.jpg,True,fus351.jpg
+Rice,Leaf_Blast,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Leaf_Blast\aug_0_7735.jpg,True,aug_0_7735.jpg
+Potato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Late_Blight\Potato leaf late blight (54).jpg,True,Potato leaf late blight (54).jpg
+Tomato,Mosaic_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Mosaic_Virus\Tomato leaf mosaic virus (42).jpg,True,Tomato leaf mosaic virus (42).jpg
+Potato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Late_Blight\Potato leaf late blight (39).jpg,True,Potato leaf late blight (39).jpg
+Tomato,Yellow_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Yellow_Virus\Tomato leaf yellow virus (52).jpg,True,Tomato leaf yellow virus (52).jpg
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h137.jpg,True,h137.jpg
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h367.jpg,True,h367.jpg
+Cotton,Fussarium_Wilt,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Fussarium_Wilt\fus315.JPG,True,fus315.JPG
+Cotton,Bacterial_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Bacterial_Blight\bact406.jpg,True,bact406.jpg
+Tomato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Early_Blight\Tomato Early blight leaf (54).jpg,True,Tomato Early blight leaf (54).jpg
+Potato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Early_Blight\Potato leaf early blight (5).jpg,True,Potato leaf early blight (5).jpg
+Cocoa,healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\healthy\ID_bGSfkl.JPG,False,ID_bGSfkl.JPG
+Cotton,Curl_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Curl_Virus\curl237.jpg,True,curl237.jpg
+Cocoa,anthracnose,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\anthracnose\ID_HlmxHp.jpg,False,ID_HlmxHp.jpg
+Cotton,Fussarium_Wilt,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Fussarium_Wilt\fus6.jpg,True,fus6.jpg
+Potato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Early_Blight\Potato leaf early blight (43).jpg,True,Potato leaf early blight (43).jpg
+Potato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Early_Blight\Potato leaf early blight (56).jpg,True,Potato leaf early blight (56).jpg
+Cocoa,healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\healthy\ID_a9pyQx.jpg,False,ID_a9pyQx.jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_caS2UM.jpg,False,ID_caS2UM.jpg
+Potato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Early_Blight\Potato leaf early blight (20).jpg,True,Potato leaf early blight (20).jpg
+Rice,Leaf_Scald,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Leaf_Scald\aug_0_117.jpg,True,aug_0_117.jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_eJwLMN.jpg,False,ID_eJwLMN.jpg
+Cocoa,anthracnose,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\anthracnose\ID_JPS94p.jpg,False,ID_JPS94p.jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_ckpnSN.jpg,False,ID_ckpnSN.jpg
+Tomato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Healthy\Tomato leaf (18).jpg,True,Tomato leaf (18).jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_FfkQGk.jpg,False,ID_FfkQGk.jpg
+Rice,Leaf_Blast,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Leaf_Blast\aug_0_9801.jpg,True,aug_0_9801.jpg
+Potato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Early_Blight\Potato leaf early blight (11).jpg,True,Potato leaf early blight (11).jpg
+Cocoa,healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\healthy\ID_ck6aIS.jpg,False,ID_ck6aIS.jpg
+Cocoa,anthracnose,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\anthracnose\ID_DhtQeo.jpg,False,ID_DhtQeo.jpg
+Tomato,Yellow_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Yellow_Virus\Tomato leaf yellow virus (15).jpg,True,Tomato leaf yellow virus (15).jpg
+Tomato,Bacterial_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Bacterial_Spot\Tomato leaf bacterial spot (54).jpg,True,Tomato leaf bacterial spot (54).jpg
+Cotton,Curl_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Curl_Virus\curl169.jpg,True,curl169.jpg
+Cotton,Bacterial_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Bacterial_Blight\bact210.jpg,True,bact210.jpg
+Potato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Late_Blight\Potato leaf late blight (10).jpg,True,Potato leaf late blight (10).jpg
+Potato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Early_Blight\Potato leaf early blight (47).jpg,True,Potato leaf early blight (47).jpg
+Tomato,Mosaic_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Mosaic_Virus\Tomato leaf mosaic virus (44).jpg,True,Tomato leaf mosaic virus (44).jpg
+Tomato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Early_Blight\Tomato Early blight leaf (36).jpg,True,Tomato Early blight leaf (36).jpg
+Tomato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Early_Blight\Tomato Early blight leaf (38).jpg,True,Tomato Early blight leaf (38).jpg
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h207.jpg,True,h207.jpg
+Rice,Sheath_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Sheath_Blight\Sheath_Blight (59).jpg,True,Sheath_Blight (59).jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_Oym8z4.jpg,False,ID_Oym8z4.jpg
+Rice,Brown_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Brown_Spot\aug_0_6919.jpg,True,aug_0_6919.jpg
+Potato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Healthy\468d3107-f09a-4f0d-8b9d-f08d7c49738f___RS_HL 1747.JPG,False,468d3107-f09a-4f0d-8b9d-f08d7c49738f___RS_HL 1747.JPG
+Cocoa,anthracnose,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\anthracnose\ID_V3vvQI.JPG,False,ID_V3vvQI.JPG
+Tomato,Yellow_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Yellow_Virus\Tomato leaf yellow virus (20).jpg,True,Tomato leaf yellow virus (20).jpg
+Rice,Leaf_Blast,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Leaf_Blast\IMG_20231018_143841 - Copy.jpg,True,IMG_20231018_143841 - Copy.jpg
+Cocoa,cssvd,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\cssvd\ID_M9a8zh.jpeg,False,ID_M9a8zh.jpeg
+Rice,Sheath_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Sheath_Blight\aug_0_8451.jpg,True,aug_0_8451.jpg
+Potato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Late_Blight\Potato leaf late blight (62).jpg,True,Potato leaf late blight (62).jpg
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h68.jpg,True,h68.jpg
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h190.jpg,True,h190.jpg
+Rice,Leaf_Blast,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Leaf_Blast\aug_0_9462.jpg,True,aug_0_9462.jpg
+Potato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Late_Blight\Potato leaf late blight (2).jpg,True,Potato leaf late blight (2).jpg
+Tomato,Early_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Early_Blight\Tomato Early blight leaf (32).jpg,True,Tomato Early blight leaf (32).jpg
+Potato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Healthy\4a08efaa-28cc-4356-8769-4002f4b299ef___RS_HL 1850.JPG,False,4a08efaa-28cc-4356-8769-4002f4b299ef___RS_HL 1850.JPG
+Tomato,Leaf_Mold,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\tomato\Leaf_Mold\Tomato mold leaf (61).jpg,True,Tomato mold leaf (61).jpg
+Cocoa,healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\healthy\ID_Vnz3XX.jpg,False,ID_Vnz3XX.jpg
+Rice,Bacterial_Leaf_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Bacterial_Leaf_Blight\aug_0_3762.jpg,True,aug_0_3762.jpg
+Rice,Brown_Spot,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Brown_Spot\aug_0_8342.jpg,True,aug_0_8342.jpg
+Cotton,Curl_Virus,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Curl_Virus\curl402.jpg,True,curl402.jpg
+Potato,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Healthy\1ae826e2-5148-47bd-a44c-711ec9cc9c75___RS_HL 1954.JPG,False,1ae826e2-5148-47bd-a44c-711ec9cc9c75___RS_HL 1954.JPG
+Cotton,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cotton\Healthy\h239.jpg,True,h239.jpg
+Potato,Late_Blight,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\potato\Late_Blight\Potato leaf late blight (22).jpg,True,Potato leaf late blight (22).jpg
+Cocoa,healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\cocoa\healthy\ID_LqUu60.jpg,False,ID_LqUu60.jpg
+Rice,Healthy,C:\Users\priya\Downloads\ok\TinyBayes-ML\data\dataset\rice\Healthy\aug_0_7147.jpg,True,aug_0_7147.jpg

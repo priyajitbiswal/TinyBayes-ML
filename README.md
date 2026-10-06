@@ -31,7 +31,10 @@ TinyBayes-ML/
 │   │   ├── train_crop_identifier.py     # Balanced trainer on natural field conditions
 │   │   ├── test_crop_verification_pipeline.py
 │   │   └── crop_identifier_coefficients.json
-│   └── disease_classifier/              # Batch trainers and notebook builders
+│   └── disease_classifier/              # Disease classifiers, remedies & mergers
+│       ├── crop_remedies.py             # 27-class agronomic remedies database
+│       ├── crop_remedies.json           # JSON export of remedies
+│       ├── merge_disease_coefficients.py# Merges notebook outputs + remedies into single file
 │       ├── build_clean_notebooks.py
 │       └── run_all_evaluations.py
 │
@@ -75,7 +78,8 @@ The system uses a two-stage hierarchical classification architecture:
 - Built with offline on-device inference using ONNX Runtime for Android (`mobilenet_v3_small_features.onnx`).
 - Model heads stored in `app/src/main/assets/models/`:
   - `crop_identifier_coefficients.json`: Gatekeeper model.
-  - `<crop>/jacobi_coefficients.json`: Per-crop disease diagnosis weights.
+  - `jacobi_coefficients.json`: **Unified coefficients file** containing all 5 crops and their embedded agricultural remedies.
+  - `<crop>/jacobi_coefficients.json`: Per-crop modular coefficient heads.
 
 ---
 
@@ -98,3 +102,31 @@ source .venv/bin/activate
 # Install required packages
 pip install -r requirements.txt
 ```
+
+---
+
+## 6. Manual Notebook Execution & Coefficient Merge Workflow
+
+To train or benchmark individual crops manually:
+
+1. **Run Notebooks**:
+   Open and execute any notebook in `notebooks/`:
+   - `notebooks/cocoa.ipynb`
+   - `notebooks/cotton.ipynb`
+   - `notebooks/potato.ipynb`
+   - `notebooks/rice.ipynb`
+   - `notebooks/tomato.ipynb`
+
+   Each notebook processes its active dataset, benchmarks 5 algorithms, and saves its Jacobi-DMR weights to `data/dataset/<crop>/run/jacobi_coefficients.json`.
+
+2. **Merge All Coefficients & Remedies into One File**:
+   Run the merge pipeline:
+   ```bash
+   python pipelines/disease_classifier/merge_disease_coefficients.py
+   ```
+   This script:
+   - Scans the generated notebook outputs across all 5 crops.
+   - Pairs each class with its verified agronomic treatment from `crop_remedies.py`.
+   - Generates the single unified `jacobi_coefficients.json` containing all 5 crops and treatments.
+   - Syncs the updated heads directly to `TinyBayes-App/app/src/main/assets/models/`.
+
