@@ -1,19 +1,14 @@
-# Edge-AI Mobile Plant Disease Diagnosis System
+# TinyBayes-ML: Edge-AI Plant Disease Diagnosis
 
-An end-to-end edge-AI mobile system for automated crop verification and multi-class disease diagnosis across 5 agricultural crops: **Cocoa**, **Cotton**, **Potato**, **Rice**, and **Tomato**.
+An end-to-end edge-AI machine learning research and pipeline repository for automated crop verification and multi-class disease diagnosis across 5 agricultural crops: **Cocoa**, **Cotton**, **Potato**, **Rice**, and **Tomato**.
 
 ---
 
 ## 1. Project Architecture
 
-The repository is structured following a modular Edge-AI Monorepo pattern:
-
 ```
-ok/
-├── AndroidApps/                         # Android Studio mobile application (edge client)
-│   └── app/src/main/assets/models/      # On-device ONNX feature extractor & JSON model heads
-│
-├── data/                                # Centralized data layer
+TinyBayes-ML/
+├── data/                                # Centralized data layer (gitignored)
 │   ├── dataset/                         # Active, curated datasets (subfolders per disease class)
 │   │   ├── cocoa/                       # 3 classes (anthracnose, cssvd, healthy)
 │   │   ├── cotton/                      # 7 classes (Bacterial_Blight, Curl_Virus, Healthy, etc.)
@@ -40,7 +35,8 @@ ok/
 │       ├── build_clean_notebooks.py
 │       └── run_all_evaluations.py
 │
-└── .venv/                               # Python virtual environment
+├── requirements.txt                     # Package dependencies for pipelines & notebooks
+└── README.md
 ```
 
 ---
@@ -73,9 +69,32 @@ The system uses a two-stage hierarchical classification architecture:
 
 ---
 
-## 4. Mobile Deployment (`AndroidApps/`)
+## 4. Mobile Deployment (`TinyBayes-App`)
 
-- Built for Android with offline on-device inference using ONNX Runtime for Android (`mobilenet_v3_small_features.onnx`).
-- Model heads stored in `AndroidApps/app/src/main/assets/models/`:
+- Paired with the Android edge client repository: [`TinyBayes-App`](https://github.com/priyajitbiswal/TinyBayes-App).
+- Built with offline on-device inference using ONNX Runtime for Android (`mobilenet_v3_small_features.onnx`).
+- Model heads stored in `app/src/main/assets/models/`:
   - `crop_identifier_coefficients.json`: Gatekeeper model.
   - `<crop>/jacobi_coefficients.json`: Per-crop disease diagnosis weights.
+
+---
+
+## 5. Installation & Dependencies
+
+To set up the Python environment and run all pipelines and notebooks:
+
+```bash
+# Clone the repository
+git clone https://github.com/priyajitbiswal/TinyBayes-ML.git
+cd TinyBayes-ML
+
+# Create and activate a virtual environment
+python -m venv .venv
+# On Windows:
+.venv\Scripts\activate
+# On Linux/macOS:
+source .venv/bin/activate
+
+# Install required packages
+pip install -r requirements.txt
+```
