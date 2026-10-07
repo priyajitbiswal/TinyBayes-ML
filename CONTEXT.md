@@ -85,7 +85,8 @@ TinyBayes-ML/data/
 
 ## 4. Jupyter Evaluation Notebooks (`notebooks/`)
 
-Five standalone notebooks reside in [`notebooks/`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks):
+Standalone evaluation notebooks reside in [`notebooks/`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks):
+* [`base_model_comparison.ipynb`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks/base_model_comparison.ipynb): Full image handcrafted color feature base model benchmark (No MobileNet) across all 5 crops.
 * [`cocoa.ipynb`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks/cocoa.ipynb)
 * [`cotton.ipynb`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks/cotton.ipynb)
 * [`potato.ipynb`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks/potato.ipynb)
@@ -129,6 +130,9 @@ Five standalone notebooks reside in [`notebooks/`](file:///c:/Users/priya/Downlo
        "tomato": { ... }
      }
      ```
+
+4. **Feature Extraction Benchmark Pipeline**:
+   * [`benchmark_simple_cv_vs_mobilenet.py`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/pipelines/disease_classifier/benchmark_simple_cv_vs_mobilenet.py): Directly compares classical handcrafted computer vision features (48-bin RGB histograms, HSV, spatial thumbnails, gradients) against MobileNetV3 deep embeddings across all crops, generating empirical drop analyses.
 
 ---
 

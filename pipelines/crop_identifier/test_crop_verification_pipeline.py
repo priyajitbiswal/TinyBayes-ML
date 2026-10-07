@@ -4,11 +4,14 @@ import numpy as np
 import onnxruntime as ort
 from PIL import Image
 
-WORKSPACE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-ASSETS_MODELS = os.path.join(WORKSPACE_ROOT, "AndroidApps", "app", "src", "main", "assets", "models")
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+WORKSPACE_ROOT = os.path.abspath(os.path.join(PROJECT_ROOT, ".."))
+ASSETS_MODELS = os.path.join(WORKSPACE_ROOT, "TinyBayes-App", "app", "src", "main", "assets", "models")
 
 ONNX_MODEL = os.path.join(ASSETS_MODELS, "mobilenet_v3_small_features.onnx")
-CROP_IDENTIFIER_JSON = os.path.join(ASSETS_MODELS, "crop_identifier_coefficients.json")
+CROP_IDENTIFIER_JSON = os.path.join(os.path.dirname(__file__), "crop_identifier_coefficients.json")
+if not os.path.exists(CROP_IDENTIFIER_JSON):
+    CROP_IDENTIFIER_JSON = os.path.join(ASSETS_MODELS, "crop_identifier_coefficients.json")
 
 # ImageNet normalization
 MEAN = np.array([0.485, 0.456, 0.406], dtype=np.float32)
@@ -23,13 +26,19 @@ output_name = session.get_outputs()[0].name
 with open(CROP_IDENTIFIER_JSON, "r", encoding="utf-8") as f:
     crop_coefficients = {k: np.array(v, dtype=np.float32) for k, v in json.load(f).items()}
 
-# Load Per-Crop disease models
+# Load unified disease models
+UNIFIED_MODELS_PATH = os.path.join(PROJECT_ROOT, "data", "jacobi_coefficients.json")
+if not os.path.exists(UNIFIED_MODELS_PATH):
+    UNIFIED_MODELS_PATH = os.path.join(ASSETS_MODELS, "jacobi_coefficients.json")
+
+with open(UNIFIED_MODELS_PATH, "r", encoding="utf-8") as f:
+    unified_data = json.load(f)
+
 disease_models = {}
-for crop in ["Cocoa", "Cotton", "Potato", "Rice", "Tomato"]:
-    model_path = os.path.join(ASSETS_MODELS, crop.lower(), "jacobi_coefficients.json")
-    with open(model_path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    disease_models[crop] = {k: np.array(v["beta"], dtype=np.float32) for k, v in data.items()}
+for crop, crop_dict in unified_data.items():
+    disease_models[crop.lower()] = {
+        cls_name: np.array(v["beta"], dtype=np.float32) for cls_name, v in crop_dict.items()
+    }
 
 def extract_features(image_path):
     with Image.open(image_path) as img:
@@ -53,7 +62,7 @@ def predict_crop(features):
     return best_crop, probs[best_crop]
 
 def predict_disease(features, crop):
-    model = disease_models[crop]
+    model = disease_models[crop.lower()]
     dot_products = {cls: float(features @ beta) for cls, beta in model.items()}
     max_dot = max(dot_products.values())
     exp_scores = {cls: np.exp(dot - max_dot) for cls, dot in dot_products.items()}
@@ -89,24 +98,25 @@ def full_app_pipeline(image_path, selected_crop):
 # Test cases using images from the validation set
 import pandas as pd
 val_df = pd.read_csv(os.path.join(os.path.dirname(__file__), "val_dataset_manifest.csv"))
+img_col = "path" if "path" in val_df.columns else "image_path"
 
 test_cases = [
     # 1. Matching Potato
-    (val_df[val_df["crop"] == "Potato"].iloc[0]["image_path"], "Potato"),
+    (val_df[val_df["crop"] == "Potato"].iloc[0][img_col], "Potato"),
     # 2. Mismatch: Image is Cocoa, but user selected Potato
-    (val_df[val_df["crop"] == "Cocoa"].iloc[0]["image_path"], "Potato"),
+    (val_df[val_df["crop"] == "Cocoa"].iloc[0][img_col], "Potato"),
     # 3. Matching Tomato
-    (val_df[val_df["crop"] == "Tomato"].iloc[0]["image_path"], "Tomato"),
+    (val_df[val_df["crop"] == "Tomato"].iloc[0][img_col], "Tomato"),
     # 4. Mismatch: Image is Cotton, but user selected Tomato
-    (val_df[val_df["crop"] == "Cotton"].iloc[0]["image_path"], "Tomato"),
+    (val_df[val_df["crop"] == "Cotton"].iloc[0][img_col], "Tomato"),
     # 5. Matching Rice
-    (val_df[val_df["crop"] == "Rice"].iloc[0]["image_path"], "Rice"),
+    (val_df[val_df["crop"] == "Rice"].iloc[0][img_col], "Rice"),
     # 6. Mismatch: Image is Rice, but user selected Cocoa
-    (val_df[val_df["crop"] == "Rice"].iloc[0]["image_path"], "Cocoa"),
+    (val_df[val_df["crop"] == "Rice"].iloc[0][img_col], "Cocoa"),
     # 7. Matching Cocoa
-    (val_df[val_df["crop"] == "Cocoa"].iloc[1]["image_path"], "Cocoa"),
+    (val_df[val_df["crop"] == "Cocoa"].iloc[1][img_col], "Cocoa"),
     # 8. Matching Cotton
-    (val_df[val_df["crop"] == "Cotton"].iloc[1]["image_path"], "Cotton"),
+    (val_df[val_df["crop"] == "Cotton"].iloc[1][img_col], "Cotton"),
 ]
 
 passed_tests = 0

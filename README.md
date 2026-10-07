@@ -20,6 +20,7 @@ TinyBayes-ML/
 │       └── PlantDoc/                    # Raw unsegregated field datasets
 │
 ├── notebooks/                           # Jupyter disease evaluation notebooks
+│   ├── base_model_comparison.ipynb      # Handcrafted feature base model benchmark (No MobileNet)
 │   ├── cocoa.ipynb                      # Cocoa benchmark (5 algorithms)
 │   ├── cotton.ipynb                     # Cotton benchmark (5 algorithms)
 │   ├── potato.ipynb                     # Potato benchmark (5 algorithms)
@@ -29,14 +30,15 @@ TinyBayes-ML/
 ├── pipelines/                           # Python training and evaluation pipelines
 │   ├── crop_identifier/                 # Gatekeeper crop verification pipeline (5 crops)
 │   │   ├── train_crop_identifier.py     # Balanced trainer on natural field conditions
-│   │   ├── test_crop_verification_pipeline.py
-│   │   └── crop_identifier_coefficients.json
+│   │   ├── test_crop_verification_pipeline.py # End-to-end verification tests
+│   │   ├── crop_identifier_coefficients.json  # 576-dim gatekeeper weights
+│   │   └── README.md
 │   └── disease_classifier/              # Disease classifiers, remedies & mergers
 │       ├── crop_remedies.py             # 27-class agronomic remedies database
 │       ├── crop_remedies.json           # JSON export of remedies
-│       ├── merge_disease_coefficients.py# Merges notebook outputs + remedies into single file
-│       ├── build_clean_notebooks.py
-│       └── run_all_evaluations.py
+│       ├── merge_disease_coefficients.py# Merges notebook outputs + remedies into unified asset
+│       ├── benchmark_simple_cv_vs_mobilenet.py # Benchmarks handcrafted CV features vs MobileNetV3
+│       └── README.md
 │
 ├── CROP_DISEASE_REMEDIES.md             # Comprehensive 27-class agricultural remedies guide
 ├── CONTEXT.md                           # Comprehensive architecture and context specification
