@@ -82,12 +82,6 @@ True_Rice             0            0            0         15            0
 True_Tomato           1            2            6          0            6
 ```
 
-### Real-World Internet Photo Benchmark:
-- Tested on `online_tomato_1.jpg` (a high-resolution real-world outdoor tomato leaf photo with natural foliage background):
-  - **Predicted Crop**: **Tomato** (Score: **96.8% confidence**)
-  - Previous model on studio PlantVillage dataset misclassified this as Cotton (52.9% Cotton vs 22.8% Tomato).
-  - The PlantDoc-trained model correctly resolves this domain shift.
-
 ---
 
 ## 4. Generated Artifacts

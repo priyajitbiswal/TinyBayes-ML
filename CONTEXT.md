@@ -8,8 +8,8 @@ This document is the **single source of truth** for the `TinyBayes-ML` repositor
 
 **TinyBayes** is an ultra-lightweight, closed-form Edge-AI plant disease diagnosis system designed for real-time mobile execution on low-cost smartphones without internet connectivity.
 
-* **Repository**: [`TinyBayes-ML`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML)
-* **Companion Mobile App**: [`TinyBayes-App`](file:///c:/Users/priya/Downloads/ok/TinyBayes-App)
+* **Repository**: [`TinyBayes-ML`](https://github.com/priyajitbiswal/TinyBayes-ML)
+* **Companion Mobile App**: [`TinyBayes-App`](https://github.com/priyajitbiswal/TinyBayes-App)
 * **Core Paradigm**: Replaces heavy deep neural network classifiers (DenseNet, ResNet, ViT) with **Jacobi-DMR (Dirichlet-Multinomial Regression)** on top of a frozen MobileNetV3 feature extractor.
 * **Key Advantages**:
   * **Instant Training**: Trains closed-form analytical solutions in seconds (no backpropagation, no GPUs, no hyperparameter tuning loops).
@@ -36,7 +36,7 @@ $$\eta_{i,c} = \ln\left( \frac{y_{i,c} + a}{1 + k \cdot b} \right)$$
 Rather than iterative stochastic gradient descent, Jacobi-DMR computes the exact optimal parameter vector $\beta_c \in \mathbb{R}^{576}$ analytically via the normal equations:
 $$\beta_c = \left( X^T X + \lambda I \right)^{-1} X^T \eta_c$$
 * **Why Tikhonov / Ridge Regularization ($\lambda = 1.0$) is Used**: In high-dimensional feature spaces ($D = 576$) with collinear image embeddings or small sample sizes, unregularized $X^T X$ can become ill-conditioned, raising `LinAlgError: Singular matrix`. Adding $\lambda I$ guarantees positive-definiteness and numerical stability.
-* **Numerical Implementation**: Solved using Cholesky factorization via [`np.linalg.solve(X.T @ X + \lambda I, X.T @ \eta)`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks/cocoa.ipynb#L100-L130) rather than explicit matrix inversion.
+* **Numerical Implementation**: Solved using Cholesky factorization via [`np.linalg.solve(X.T @ X + \lambda I, X.T @ \eta)`](notebooks/cocoa.ipynb#L100-L130) rather than explicit matrix inversion.
 
 ### D. Prediction & Equivalence to Linear Dot Product
 In the original paper, predicted Poisson intensity is:
@@ -49,7 +49,7 @@ On edge devices, we compute raw linear dot products $z_c = \mathbf{x} \cdot \bet
 
 ## 3. Dataset Architecture & Image Inventory
 
-All raw image datasets are organized inside [`data/`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/data):
+All raw image datasets are organized inside [`data/`](data):
 
 ```text
 TinyBayes-ML/data/
@@ -65,7 +65,7 @@ TinyBayes-ML/data/
 └── jacobi_coefficients.json     # Single unified merged model output (479 KB)
 ```
 
-### Active Dataset Class Counts ([`data/dataset/`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/data/dataset))
+### Active Dataset Class Counts ([`data/dataset/`](data/dataset))
 1. **Cocoa (3 classes — 5,523 images)**:
    * `anthracnose` (1,566) | `cssvd` (2,237) | `healthy` (1,720)
    * *Source*: 100% TinyBayes Amini Ghana farm dataset.
@@ -85,13 +85,13 @@ TinyBayes-ML/data/
 
 ## 4. Jupyter Evaluation Notebooks (`notebooks/`)
 
-Standalone evaluation notebooks reside in [`notebooks/`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks):
-* [`base_model_comparison.ipynb`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks/base_model_comparison.ipynb): Full image handcrafted color feature base model benchmark (No MobileNet) across all 5 crops.
-* [`cocoa.ipynb`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks/cocoa.ipynb)
-* [`cotton.ipynb`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks/cotton.ipynb)
-* [`potato.ipynb`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks/potato.ipynb)
-* [`rice.ipynb`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks/rice.ipynb)
-* [`tomato.ipynb`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks/tomato.ipynb)
+Standalone evaluation notebooks reside in [`notebooks/`](notebooks):
+* [`base_model_comparison.ipynb`](notebooks/base_model_comparison.ipynb): Full image handcrafted color feature base model benchmark (No MobileNet) across all 5 crops.
+* [`cocoa.ipynb`](notebooks/cocoa.ipynb)
+* [`cotton.ipynb`](notebooks/cotton.ipynb)
+* [`potato.ipynb`](notebooks/potato.ipynb)
+* [`rice.ipynb`](notebooks/rice.ipynb)
+* [`tomato.ipynb`](notebooks/tomato.ipynb)
 
 ### Standard Notebook Execution Structure
 * **Cell 1: Imports**: Pure Python (`numpy`, `pandas`, `PIL`, `onnxruntime`, `sklearn`). No PyTorch or CUDA dependencies needed.
@@ -107,10 +107,10 @@ Standalone evaluation notebooks reside in [`notebooks/`](file:///c:/Users/priya/
 ## 5. Crop Remedies & Merging Pipeline
 
 1. **Agronomic Reference Guide**:
-   * [`CROP_DISEASE_REMEDIES.md`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/CROP_DISEASE_REMEDIES.md): Human-readable reference guide for all 27 active crop diseases, documenting symptoms, field dosages, commercial chemical active ingredients, cultural sanitation, and vector management.
-2. **Remedy Code & JSON Databases** (in [`pipelines/disease_classifier/`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/pipelines/disease_classifier)):
-   * [`crop_remedies.py`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/pipelines/disease_classifier/crop_remedies.py) & [`crop_remedies.json`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/pipelines/disease_classifier/crop_remedies.json): Verified machine-readable treatments for all 27 classes across Cultural, Biological, and Chemical controls.
-3. **[`merge_disease_coefficients.py`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/pipelines/disease_classifier/merge_disease_coefficients.py)**:
+   * [`CROP_DISEASE_REMEDIES.md`](CROP_DISEASE_REMEDIES.md): Human-readable reference guide for all 27 active crop diseases, documenting symptoms, field dosages, commercial chemical active ingredients, cultural sanitation, and vector management.
+2. **Remedy Code & JSON Databases** (in [`pipelines/disease_classifier/`](pipelines/disease_classifier)):
+   * [`crop_remedies.py`](pipelines/disease_classifier/crop_remedies.py) & [`crop_remedies.json`](pipelines/disease_classifier/crop_remedies.json): Verified machine-readable treatments for all 27 classes across Cultural, Biological, and Chemical controls.
+3. **[`merge_disease_coefficients.py`](pipelines/disease_classifier/merge_disease_coefficients.py)**:
    * Merges individual notebook outputs from `data/dataset/<crop>/run/jacobi_coefficients.json` with `crop_remedies.json`.
    * **Outputs exactly ONE unified file**:
      * `TinyBayes-ML/data/jacobi_coefficients.json`
@@ -132,30 +132,30 @@ Standalone evaluation notebooks reside in [`notebooks/`](file:///c:/Users/priya/
      ```
 
 4. **Feature Extraction Benchmark Pipeline**:
-   * [`benchmark_simple_cv_vs_mobilenet.py`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/pipelines/disease_classifier/benchmark_simple_cv_vs_mobilenet.py): Directly compares classical handcrafted computer vision features (48-bin RGB histograms, HSV, spatial thumbnails, gradients) against MobileNetV3 deep embeddings across all crops, generating empirical drop analyses.
+   * [`benchmark_simple_cv_vs_mobilenet.py`](pipelines/disease_classifier/benchmark_simple_cv_vs_mobilenet.py): Directly compares classical handcrafted computer vision features (48-bin RGB histograms, HSV, spatial thumbnails, gradients) against MobileNetV3 deep embeddings across all crops, generating empirical drop analyses.
 
 ---
 
 ## 6. Crop Identifier Gatekeeper Model
 
-Located in [`pipelines/crop_identifier/`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/pipelines/crop_identifier):
+Located in [`pipelines/crop_identifier/`](pipelines/crop_identifier):
 
 * **Purpose**: Verifies that the uploaded leaf belongs to the user's selected crop before diagnosing disease. Prevents analyzing a cotton leaf under a tomato model.
-* **Script**: [`train_crop_identifier.py`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/pipelines/crop_identifier/train_crop_identifier.py)
+* **Script**: [`train_crop_identifier.py`](pipelines/crop_identifier/train_crop_identifier.py)
 * **Dataset Selection Strategy**:
   * 1,000 images balanced across all 5 crops (200 per crop; 160 train, 40 validation).
   * **PlantDoc Priority**: Cotton (100% PlantDoc), Rice (100% PlantDoc), Tomato (100% PlantDoc), Potato (75% PlantDoc + 25% Healthy), Cocoa (100% Amini farm).
 * **Performance**:
   * Training Accuracy: **98.75%**
   * Validation Accuracy: **88.50%**
-* **Deployment Asset**: Saves [`crop_identifier_coefficients.json`](file:///c:/Users/priya/Downloads/ok/TinyBayes-App/app/src/main/assets/models/crop_identifier_coefficients.json) directly into `TinyBayes-App/app/src/main/assets/models/`.
+* **Deployment Asset**: Saves [`crop_identifier_coefficients.json`](pipelines/crop_identifier/crop_identifier_coefficients.json) directly into `TinyBayes-App/app/src/main/assets/models/`.
 
 ---
 
 ## 7. Operational Workflow for New Runs
 
 1. To run or update a crop model:
-   * Execute the respective notebook in [`notebooks/*.ipynb`](file:///c:/Users/priya/Downloads/ok/TinyBayes-ML/notebooks).
+   * Execute the respective notebook in [`notebooks/*.ipynb`](notebooks).
    * The notebook saves fresh coefficients to `data/dataset/<crop>/run/jacobi_coefficients.json`.
 2. To compile and deploy the unified model:
    * Run:
